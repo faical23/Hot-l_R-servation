@@ -5,8 +5,12 @@ app.use(express.json())
 const cors = require('cors')
 app.use(cors())
 
-/// IMPORT
+/// IMPORT DB
 const DB = require('./Config')
+
+/// IMPORT ROUTER
+const RouterV1 = require('./Routers');
+app.use("/api/v1", RouterV1);
 
 
 app.get('/', (req, res) => {

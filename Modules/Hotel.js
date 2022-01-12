@@ -7,6 +7,7 @@ const Hotel = mongoose.Schema({
     Phone:{type:String},
     Password:{type:String},
     Reviews:{type:Number},
+    CoverImg:{type:String},
     Image:{type:Array},
     Website:{type:String},
     Description:{type:String},
@@ -15,6 +16,7 @@ const Hotel = mongoose.Schema({
     Localisation:{x:String,y:String},
     Hashtag:{type:Array},
     Service:{Type:Array},
+    Vérified:{Type:Boolean},
 },{timestamps:true})
 mongoose.model('Hotel',Hotel);
   
