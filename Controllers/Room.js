@@ -87,6 +87,34 @@ module.exports={
             return res.status(400).json(err)
         }
     },
+    DisponbleRoom: async (req, res) => {
+        try{
+            const id = req.params.id
+            const Room =await RoomSchema.find({Hotel:id,State:false})
+            return res.status(200).json(Room)
+        }catch(err){
+            console.log(err)
+        }
+    },
+    GetRoomByType: async (req, res) => {
+        try{
+            const id = req.params.id
+            const Room =await RoomSchema.find({Type:id})
+            return res.status(200).json(Room)
+        }catch(err){
+            console.log(err)
+        }
+    },
+    GetRoomByTypeBYHotel: async (req, res) => {
+        try{
+            const Hotel = req.params.hotel
+            const type = req.params.type
+            const Room =await RoomSchema.find({Hotel:Hotel,type:type})
+            return res.status(200).json(Room)
+        }catch(err){
+            console.log(err)
+        }
+    },
 }
 
 
