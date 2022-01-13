@@ -19,6 +19,15 @@ module.exports={
             console.log(err)
         }
     },
+    GetRoomsHotel: async (req, res) => {
+        try{
+            const id = req.params.id
+            const Room =await RoomSchema.find({Hotel:id})
+            return res.status(200).json(Room)
+        }catch(err){
+            console.log(err)
+        }
+    },
     Add: async (req, res) => {
         const Room = {
             "Number":req.body.Number,
