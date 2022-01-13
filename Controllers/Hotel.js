@@ -1,5 +1,5 @@
 const HotelSchema = require('../Modules/Hotel')
-const Helper = require('../Helpers/Index')
+const Helper = require('../Helpers')
 const Db = require('../Config')
 
 module.exports={

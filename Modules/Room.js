@@ -5,8 +5,8 @@ const Room = mongoose.Schema({
     Block:{type:String},
     Price:{type:String},
     Déscription:{type:String},
-    Type:[{type:mongoose.Schema.Types.ObjectId,ref:'RoomType'}],
-    Hotel:[{type:mongoose.Schema.Types.ObjectId,ref:'Hotel'}],
+    Type:{type:mongoose.Schema.Types.ObjectId,ref:'RoomType'},
+    Hotel:{type:mongoose.Schema.Types.ObjectId,ref:'Hotel'},
     Image:[{type:Array}],
     Bed:[{type:Number}]
 },{timestamps:true})

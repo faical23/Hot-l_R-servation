@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const RoomType = mongoose.Schema({
-    Name:{Type:String},
-    Hotel:[{type:mongoose.Schema.Types.ObjectId,ref:'Hotel'}],
-
+    Name:{type:String},
 },{timestamps:true})
 mongoose.model('RoomType',RoomType);
 

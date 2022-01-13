@@ -26,14 +26,4 @@ module.exports={
           const salt = await bcrypt.genSalt(10);
           return await bcrypt.hash(Password, salt);
     },
-    ComparePassword:  (Password,UserPass) =>{
-        bcrypt.compare(Password, UserPass).then( (validPass) => {
-            Promise.resolve(validPass).then(function(validPass) {
-                console.log(validPass);
-                return validPass
-              }, function(validPass) {
-                return validPass
-              });
-        }).catch(err => console.log('error: ' + err));
-    },
 }
