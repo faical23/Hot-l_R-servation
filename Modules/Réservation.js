@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Réservation = mongoose.Schema({
     Hotel:{type:mongoose.Schema.Types.ObjectId,ref:'Hotel'},
-    Client:{type:mongoose.Schema.Types.ObjectId,ref:'Hotel'},
+    Client:{type:mongoose.Schema.Types.ObjectId,ref:'Client'},
     Total:{type:Number},
     DateStart:{type:Date},
     DateEnd:{type:Date},

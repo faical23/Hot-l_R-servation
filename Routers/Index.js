@@ -8,6 +8,7 @@ const RoomRouter = require('./Room');
 const CommentRouter = require('./Comment');
 const ClientRouter = require('./Client');
 const RéservationRouter = require('./Réservation');
+const InvoiceRouter = require('./Invoice');
 
 
 router.use("/Hotel", HotelRouter);
@@ -17,6 +18,7 @@ router.use("/Room", RoomRouter);
 router.use("/Comment", CommentRouter);
 router.use("/Client", ClientRouter);
 router.use("/Reservation", RéservationRouter);
+router.use("/Invoice", InvoiceRouter);
 
 module.exports = router
 
