@@ -1,0 +1,208 @@
+.contact {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.contact .leftPart {
+  width: 50%;
+  color: white !important;
+  padding: 10% 2% 0% 12%;
+}
+
+.contact .leftPart h2 {
+  color: #202020 !important;
+  line-height: 80px;
+  width: 70%;
+  z-index: 100;
+  position: relative;
+  right: 53px;
+  top: 30px;
+  letter-spacing: 2px;
+  font-size: 60px;
+  font-family: 'poping-Bold';
+}
+
+.contact .leftPart p {
+  font-size: 20px !important;
+  font-weight: 100 !important;
+  color: #1f1f1f !important;
+  padding: 240px 0px 0px 0px;
+  width: 80%;
+  position: relative;
+  right: 53px;
+  font-family: 'poping-Regular';
+  line-height: 40px;
+}
+
+.contact .leftPart .leftPart__borer {
+  border: 13px solid #5d5de7;
+  padding: 120px;
+  width: 24%;
+  position: absolute;
+  z-index: 0;
+}
+
+.contact .leftPart .arrow_icons_contact {
+  position: absolute;
+  right: 0px;
+  top: 50px;
+  left: 5%;
+  cursor: pointer;
+  color: white;
+  width: 20%;
+}
+
+.contact .leftPart .arrow_icons_contact:hover svg {
+  color: #4480abcf;
+}
+
+@media only screen and (max-width: 1440px) {
+  .contact .leftPart h2 {
+    width: 85%;
+  }
+  .contact .leftPart p {
+    padding: 170px 0px 0px 0px;
+  }
+  .contact .leftPart .leftPart__borer {
+    width: 28%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .contact .leftPart h2 {
+    font-size: 50px;
+    width: 100%;
+  }
+  .contact .leftPart p {
+    padding: 170px 0px 0px 0px;
+    width: 100%;
+  }
+  .contact .leftPart .leftPart__borer {
+    width: 30%;
+  }
+  .contact .leftPart .arrow_icons_contact {
+    top: 20px !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .contact .leftPart {
+    padding: 14% 2% 0% 12% !important;
+  }
+  .contact .leftPart h2 {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .contact .leftPart {
+    padding: 35% 2% 0% 12% !important;
+    height: 100%;
+  }
+}
+
+.contact .rightPart {
+  width: 50%;
+  background-color: green;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contact .rightPart form {
+  background-color: #4480abdc;
+  width: 60%;
+  padding: 80px 40px;
+  margin: 100px auto;
+  border-radius: 10px;
+}
+
+.contact .rightPart form input, .contact .rightPart form textarea {
+  border-bottom: 1px solid #ffffff;
+  background: none;
+  box-shadow: none;
+  border-radius: 0px;
+  padding-bottom: 5px;
+  margin: 60px  auto;
+  width: 80%;
+  padding: 0px 0px 10px 0px;
+  color: white !important;
+  transition: 0.3s ease-in-out;
+}
+
+.contact .rightPart form input:focus, .contact .rightPart form textarea:focus {
+  border-bottom: 1px solid red;
+  transition: 0.3s ease-in-out;
+}
+
+.contact .rightPart form textarea {
+  margin: 0px 0px 50px 0px;
+  width: 80%;
+  height: 80px;
+  position: relative;
+  left: 50px;
+}
+
+.contact .rightPart form ::placeholder {
+  color: white;
+}
+
+.contact .rightPart form .btn__form__contact {
+  width: 90%;
+  text-align: end;
+}
+
+.contact .rightPart form .btn__form__contact button {
+  padding: 10px 45px;
+}
+
+.contact .rightPart form .btn__form__contact button:hover {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+@media only screen and (max-width: 1440px) {
+  .contact .rightPart form {
+    width: 70% !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .contact .rightPart form {
+    width: 90% !important;
+  }
+  .contact .rightPart form input, .contact .rightPart form textarea {
+    width: 100% !important;
+  }
+  .contact .rightPart form textarea {
+    left: 0px !important;
+  }
+  .contact .rightPart form .btn__form__contact {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .contact {
+    display: block;
+  }
+  .contact .leftPart {
+    width: 100%;
+    padding: 40px;
+  }
+  .contact .leftPart h2, .contact .leftPart p {
+    position: relative;
+    right: 15px !important;
+  }
+  .contact .leftPart .arrow_icons_contact {
+    right: 0px !important;
+    top: 10px;
+  }
+  .contact .rightPart {
+    width: 100%;
+    padding: 1px 0px;
+  }
+}

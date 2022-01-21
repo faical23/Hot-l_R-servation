@@ -1,0 +1,225 @@
+.HotelPage{
+    padding:0px 10%;
+    margin-top:50px;
+    .HotelPage__hero{
+        border-radius: 40px;
+        padding:150px 40px;
+        text-align:center;
+        background-image: url(../Assets/Img/HeroBackground.jpg);
+        background-repeat: no-repeat;
+        background-position:center;
+        background-size: cover;
+        h1{
+            font-family: 'poping-Bold';
+            font-weight: bolder;
+            font-size:40px;
+            line-height:80px;
+            padding:10px 0px;
+            width: 100%;
+            margin: 0px auto;
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+        p{
+            font-family: 'poping-Regular';
+            font-size:20px;
+            line-height:30px;
+            color:#a3a3a3;
+            text-align: center;
+            width: 60%;
+            margin: 0px auto;
+            // color: black;
+            color: white;
+
+        }
+        .container{
+            svg{
+                width: 30px;
+                height: 30px;
+            }
+            display: flex;
+            align-items: center;
+            justify-content:space-between;
+            width: 50%;
+            input{
+                width: 100%;
+                padding:15px 0px;
+                outline:none;
+            }
+            padding:0px 30px;
+            background-color:white;
+            box-shadow: 0px 0px 11px -9px black;
+            margin: 15px auto;
+            border-radius: 80px;
+        }
+        button{
+            margin-top: 20px;
+            background-color:rgb(101, 101, 238);
+            border: 1px solid rgb(101, 101, 238);
+            color: white;
+            padding:12px 55px;
+            font-size:19px;
+            cursor: pointer;
+            border-radius: 50px;
+            &:hover{
+                border: 1px solid rgb(101, 101, 238);
+                background-color:transparent;
+                color: rgb(101, 101, 238); 
+            }
+        }
+    }
+    .HotelPage__BestLodging,.HotelPage__OurSeelection{
+        h1 {
+            font-family: 'poping-Bold';
+            font-weight: bolder;
+            font-size:40px;
+            line-height:80px;
+            padding:10px 0px;
+            width: 100%;
+            margin: 0px auto;
+            margin-bottom: 20px; 
+            text-transform: capitalize;
+        }
+        .HotelPage__Item{
+            display: flex;
+            align-items: center;
+            justify-content:space-between;
+            h2{
+                border-radius: 30px;
+                width:22%;
+                text-align: center;
+                font-family: 'poping-Bold';
+                font-weight: bolder;
+                font-size:25px;
+                padding: 150px 0px;
+                background-image: url(../Assets/Img/HeroBackground.jpg);
+                background-repeat: no-repeat;
+                background-position:center;
+                background-size: cover;
+                box-shadow: 0px 0px 11px -7px black;
+                color: white;
+                transition: .3s ease-in-out;
+                cursor: pointer;
+
+            }
+        }
+
+    }
+    .HotelPage__OurSeelection{
+        .HotelPage__Hotels{
+            display: grid;
+            grid-template-columns: repeat(auto-fit ,minmax(370px,1fr));
+            justify-content: space-between;
+            transition: .3s ease-in-out;
+            .HotelPage__Hotels__Item{
+                width:370px;
+                margin-bottom:60px;
+                cursor: pointer;
+                padding: 20px;
+                border-radius:30px;
+                transition: .3s ease-in-out;
+                height:580px;
+                .HotelPage__Hotel_Img{
+                    width:300px;
+                    height: 300px;
+                    border-radius:40px;
+                    margin: 0px auto;
+                }
+                h2{
+                    font-family: 'poping-Bold';
+                    font-weight: bolder;
+                    font-size:30px;
+                    padding:10px 0px;
+                    text-transform: capitalize;
+                    width:300px;
+                    margin: auto;
+                }
+                .HotelPage__Hotel__Local{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width:300px;
+                    margin: auto;
+                    h6{
+                        font-family: 'poping-Regular';
+                        font-size:17px;
+                        line-height:35px;
+                        color:#444444;
+                    }
+                    h5{
+                        font-family: 'poping-Semibold';
+                        font-size:22px;
+                        line-height:35px;
+                        color:#444444;
+                    }
+                    .Rate{
+                        display:flex;
+                        align-items:center;
+                        img{
+                            width:30px;
+                            margin-right: 10px;
+                        }
+                    }
+
+                }
+                h3{
+                    font-family: 'poping-Bold';
+                    font-weight: bolder;
+                    font-size:25px;
+                    padding:10px 0px;
+                    text-transform: capitalize;
+                    width:300px;
+                    margin: auto;
+                    span{
+                        font-family: 'poping-Light';
+                        font-size: 17px;
+                    }
+                }
+                button{
+                    display:none;
+                    margin-top: 20px;
+                    background-color:rgb(101, 101, 238);
+                    border: 1px solid rgb(101, 101, 238);
+                    color: white;
+                    padding:10px 55px;
+                    font-size:19px;
+                    width: 100%;
+                    cursor: pointer;
+                    border-radius: 50px;
+                    transition: .3s ease-in-out;
+                    &:hover{
+                        transition: .3s ease-in-out;
+                        border: 1px solid rgb(101, 101, 238);
+                        background-color:transparent;
+                        color: rgb(101, 101, 238); 
+                    }
+                }
+                &:hover{
+                    box-shadow: 0px 0px 11px -7px black;
+                    button{
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    .BtnZone{
+        text-align: center;
+        .SeeMore{
+            border: 2px solid rgb(101, 101, 238);
+            color: rgb(101, 101, 238);
+            padding:10px 55px;
+            font-size:19px;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: .3s ease-in-out;
+            &:hover{
+                transition: .3s ease-in-out;
+                background-color:rgb(101, 101, 238);
+                color: white; 
+            }
+        }
+    }
+
+}

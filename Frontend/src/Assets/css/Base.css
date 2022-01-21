@@ -37,3 +37,15 @@
   font-family: 'Poppins-MediumItalic';
   src: url(../fonts/poppins-1/Poppins-MediumItalic.otf);
 }
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #26262c;
+  font-family: 'poping-Regular';
+}
+
+body {
+  background-color: #fdf7fa;
+}

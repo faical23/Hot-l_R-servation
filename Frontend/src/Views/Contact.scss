@@ -1,0 +1,188 @@
+.contact{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    height: 100vh;
+    overflow-y: hidden;
+    .leftPart{
+        width: 50%;
+        color: white !important;
+        padding:10% 2% 0% 12%;
+        h2{
+            color: rgb(32, 32, 32) !important;
+            line-height: 80px;
+            width: 70%;
+            z-index: 100;
+            position: relative;
+            right: 53px;
+            top: 30px;
+            letter-spacing: 2px;
+            font-size: 60px;
+            font-family: 'poping-Bold';
+
+        }
+        p{
+            font-size: 20px !important;
+            font-weight: 100 !important;
+            color: rgb(31, 31, 31) !important;
+            padding: 240px 0px 0px 0px;
+            width: 80%;
+            position: relative;
+            right: 53px;
+            font-family: 'poping-Regular';
+            line-height:40px
+        }
+        .leftPart__borer{
+            border: 13px solid rgb(93, 93, 231);;
+            padding: 120px;
+            width: 24%;
+            position: absolute;
+            z-index: 0;
+        }
+        .arrow_icons_contact{
+            position: absolute;
+            right: 0px;
+            top: 50px;
+            left: 5%;
+            cursor: pointer;
+            color:white;
+
+
+            width: 20%;
+            &:hover{
+                svg  {
+                    color: #4480abcf;
+                }
+            }
+        }
+        @media only screen and (max-width: 1440px) {
+            h2{
+                width: 85%;
+            }
+            p{
+                padding: 170px 0px 0px 0px;
+            }
+            .leftPart__borer{
+                width: 28%;
+            }
+        }
+        @media only screen and (max-width: 1024px) {
+            h2{
+                font-size: 50px;
+                width: 100%;
+            }
+            p{
+                padding: 170px 0px 0px 0px;
+                width: 100%;
+            }
+            .leftPart__borer{
+                width: 30%;
+            }
+            .arrow_icons_contact{
+                top:  20px !important;
+            }
+        }
+        @media only screen and (max-width: 768px) {
+            padding: 14% 2% 0% 12% !important;
+            h2{
+                font-size: 40px;
+            }
+        }
+        @media only screen and (max-width: 560px) {
+            padding: 35% 2% 0% 12% !important;
+            height:100%;
+        }
+    }
+    .rightPart{
+        width: 50%;
+        background-color:green;
+        background-repeat: no-repeat;
+        background-size: cover;
+        form{
+            background-color: #4480abdc;
+            width: 60%;
+            padding: 80px 40px;
+            margin: 100px auto;
+            border-radius: 10px;
+            input,textarea{
+                border-bottom: 1px solid #ffffff;
+                background: none;
+                box-shadow: none;
+                border-radius: 0px;
+                padding-bottom:5px ;
+                margin:60px  auto;
+                width: 80%;
+                padding: 0px 0px 10px 0px;
+                color: white !important;
+                transition: 0.3s ease-in-out;
+
+                &:focus{
+                    border-bottom: 1px solid red;
+                    transition: 0.3s ease-in-out;
+
+                }
+            }
+            textarea{
+                margin: 0px 0px 50px 0px;
+                width: 80%;
+                height: 80px;
+                position: relative;
+                left: 50px;
+            }
+            ::placeholder{
+                color: white;
+            }
+            .btn__form__contact{
+                width: 90%;
+                text-align: end;
+                button{
+                    padding: 10px 45px;
+                    &:hover{
+                        background: transparent;
+                        color: white;
+                        border: 1px solid white;
+                    }
+                }
+            }
+
+        }
+        @media only screen and (max-width: 1440px) {
+            form{
+                width: 70% !important;
+            }
+        }
+        @media only screen and (max-width: 1024px) {
+            form{
+                width: 90% !important;
+                input,textarea{
+                    width: 100% !important;
+                }
+                textarea{
+                    left: 0px !important;
+                }
+                .btn__form__contact{
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: 560px) {
+        display: block;
+        .leftPart{
+            width: 100%;
+            padding: 40px;
+            h2,p{
+                position: relative;
+                right: 15px !important;
+            }
+            .arrow_icons_contact{
+                right: 0px !important;
+                top: 10px;
+            }
+        }
+        .rightPart{
+            width: 100%;
+            padding: 1px 0px;
+        }
+    }
+}
