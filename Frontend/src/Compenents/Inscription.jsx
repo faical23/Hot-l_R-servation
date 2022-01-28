@@ -9,7 +9,7 @@ function Inscription(Store) {
   return (
       <div className="ConnexionZone">
         <div className="Inscription">
-                    <img className="Remove" src={Remove} alt="" onClick={()=>Store.CloseConnexion()} />
+                    <img className="Remove" src={Remove} alt="" onClick={()=>Store.ClosePopup()} />
                     <p className="RaedyHave">Already have account? <span onClick={()=>Store.SwitchToLogin()}>Sign in</span></p>
                     <h2>Create account</h2>
                     <div  >
@@ -47,7 +47,7 @@ function Inscription(Store) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      CloseConnexion: () => dispatch({ type: 'CLOSE_CONNEXION'}),
+      ClosePopup: () => dispatch({ type: 'CLOSE_POPUP'}),
       SwitchToLogin: () => dispatch({ type: 'OPEN_LOGIN'}),
     }
   }

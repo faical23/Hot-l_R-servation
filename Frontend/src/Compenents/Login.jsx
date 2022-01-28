@@ -6,9 +6,9 @@ import { connect } from "react-redux";
 
 function Login(Store) {
   return (
-    
+    <div className="ConnexionZone">
         <div className="Inscription">
-                    <img className="Remove" src={Remove} alt="" onClick={()=>Store.CloseConnexion()}  />
+                    <img className="Remove" src={Remove} alt="" onClick={()=>Store.ClosePopup()}  />
                     <p className="RaedyHave">I don't have account? <span onClick={()=>Store.SwitchToInscription()} >Sign up</span></p>
                     <h2>Welcome again</h2>
                     <div >
@@ -22,14 +22,14 @@ function Login(Store) {
                         </div>
                         <button>Sign in</button>
                     </div>
-
         </div>
+    </div>
   );
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    CloseConnexion: () => dispatch({ type: 'CLOSE_CONNEXION'}),
+    ClosePopup: () => dispatch({ type: 'CLOSE_POPUP'}),
     SwitchToInscription: () => dispatch({ type: 'OPEN_CONNEXION'}),
   }
 }

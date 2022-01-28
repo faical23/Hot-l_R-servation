@@ -35,6 +35,11 @@ const Navbar = (Store)=>{
                             </Link>
                         </li>
                         <li>
+                            <Link to="/Dashboard/Statistique">
+                                Dashboard
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/Contact">
                                 Contact
                             </Link>

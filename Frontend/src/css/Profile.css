@@ -1,3 +1,11 @@
+.Profile .TitleSection {
+  font-family: 'poping-Bold';
+  font-weight: bolder;
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #131379;
+}
+
 .Profile .Profile__Hero {
   padding: 200px 40px;
   text-align: center;
@@ -26,18 +34,18 @@
   padding: 50px 10%;
   display: flex;
   align-items: start;
+  justify-content: space-between;
 }
 
 .Profile .Profile_Information .Profile_Information__left, .Profile .Profile_Information .Profile_Information__Right {
-  width: 50%;
-  height: 1000px;
-  border-radius: 10px;
+  width: 48%;
 }
 
 .Profile .Profile_Information .Profile_Information__left .Description {
   box-shadow: 0px 0px 11px -7px black;
   padding: 50px;
   border-radius: 30px;
+  background-color: #fff8fb;
 }
 
 .Profile .Profile_Information .Profile_Information__left .Description h5 {
@@ -45,7 +53,7 @@
   font-weight: bolder;
   font-size: 30px;
   margin-bottom: 20px;
-  color: #181818;
+  color: #131379;
 }
 
 .Profile .Profile_Information .Profile_Information__left .Description p {
@@ -53,4 +61,388 @@
   font-size: 17px;
   line-height: 30px;
   color: #858585;
+}
+
+.Profile .Profile_Information .Localisation .Localisation_Map {
+  width: 100%;
+  height: 250px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.Profile .Profile_Information .Profile_Services {
+  margin-top: 50px;
+}
+
+.Profile .Profile_Information .Profile_Services .Profile_Services_items {
+  background-color: #fff8fb;
+  box-shadow: 0px 0px 11px -7px black;
+  border-radius: 20px;
+  width: 100%;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  justify-content: space-between;
+}
+
+.Profile .Profile_Information .Profile_Services .Profile_Services_items .Profile_Services_items_item {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.Profile .Profile_Information .Profile_Services .Profile_Services_items .Profile_Services_items_item h6 {
+  font-family: 'poping-Bold';
+  font-weight: bolder;
+  font-size: 20px;
+  color: #181818;
+  padding: 10px 0px;
+}
+
+.Profile .Profile_Information .Profile_Services .Profile_Services_items .Profile_Services_items_item img {
+  width: 70px;
+  margin: 0px auto;
+}
+
+.Profile .Profile_Information .Profile_Services .Profile_Services_items .Profile_Services_items_item svg {
+  width: 60px;
+  height: 60px;
+  margin: 0px auto;
+}
+
+.Profile .Profile_Information .Informationbusiness {
+  margin-top: 30px;
+}
+
+.Profile .Profile_Information .Informationbusiness .Informationbusiness_Items {
+  background-color: #fff8fb;
+  box-shadow: 0px 0px 11px -7px black;
+  padding: 30px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.Profile .Profile_Information .Informationbusiness .Informationbusiness_Items .Informationbusiness_item {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.Profile .Profile_Information .Informationbusiness .Informationbusiness_Items .Informationbusiness_item h6 {
+  font-size: 17px;
+}
+
+.Profile .Profile_Information .Informationbusiness .Informationbusiness_Items .Informationbusiness_item img {
+  width: 30px;
+  margin-right: 30px;
+}
+
+.Profile .Profile_Information .Profile_SocialMedia {
+  margin-top: 40px;
+}
+
+.Profile .Profile_Information .Profile_SocialMedia .Profile_SocialMedia__Icons {
+  background-color: #fff8fb;
+  box-shadow: 0px 0px 11px -7px black;
+  border-radius: 20px;
+  width: 50%;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Profile .Profile_Information .Profile_SocialMedia .Profile_SocialMedia__Icons img {
+  width: 50px;
+  margin-right: 30px;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.Profile .Profile_Information .Profile_SocialMedia .Profile_SocialMedia__Icons img:hover {
+  transform: scale(1.09);
+}
+
+.Profile .Profile_Information .Profile_Revwies {
+  margin-top: 40px;
+  width: 80%;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card {
+  margin: 20px 0px;
+  border-radius: 20px;
+  padding: 20px 25px;
+  box-shadow: 0px 0px 11px -3px rgba(0, 0, 0, 0.41);
+  background-color: #fff8fb;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card .reviews__card__all {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card .reviews__card__all .start {
+  display: flex;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card .reviews__card__all .start img {
+  width: 30px;
+  margin: right 10px;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card .reviews__card__all h3 {
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card .reviews__card__all h3 span {
+  font-family: 'poping-Bold';
+  font-size: 40px;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card .reviews__card__all p {
+  font-family: 'poping-Medium';
+  font-size: 17px;
+  color: #4d4d4d;
+  margin-left: 20px;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card .reviews__card__Allbars_singleBars {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 0px;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card .reviews__card__Allbars_singleBars .single_Bar {
+  border-radius: 10px;
+  width: 80%;
+  height: 15px;
+  background: white;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card .reviews__card__Allbars_singleBars .single_Bar .bar_yellow {
+  border-radius: 20px;
+  width: 0%;
+  height: 15px;
+  background: #FFE03E;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card .reviews__card__Allbars_singleBars p {
+  position: relative;
+  bottom: 2px;
+  color: black;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card button {
+  margin-top: 20px;
+  background-color: #131379;
+  border: 1px solid #131379;
+  color: white;
+  padding: 8px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.Profile .Profile_Information .Profile_Revwies .reviews__card button:hover {
+  border: 1px solid #131379;
+  background-color: transparent;
+  color: #131379;
+}
+
+.Profile .Profile_Information .Profile_Comment {
+  margin-top: 40px;
+  width: 80%;
+}
+
+.Profile .Profile_Information .Profile_Comment .reviewsPeaple__single {
+  margin-bottom: 30px;
+}
+
+.Profile .Profile_Information .Profile_Comment .reviewsPeaple__single_Info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.Profile .Profile_Information .Profile_Comment .reviewsPeaple__single_Info h4 {
+  padding: 15px 20px;
+  border-radius: 100%;
+  background-color: #E8E8E8;
+  box-shadow: 0px 0px 11px -10px rgba(0, 0, 0, 0.41);
+  margin-right: 30px;
+  color: white;
+  font-size: 25px;
+  font-family: 'poping-Semibold';
+}
+
+.Profile .Profile_Information .Profile_Comment h6 {
+  font-family: 'poping-Bold';
+  font-size: 17px;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+.Profile .Profile_Information .Profile_Comment P {
+  font-family: 'poping-Regular';
+  box-shadow: 0px 0px 11px -6px rgba(0, 0, 0, 0.41);
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 17px;
+  background-color: #fff8fb;
+  line-height: 30px;
+  margin-bottom: 10px;
+  width: 90%;
+  margin-left: auto;
+}
+
+.Profile .Profile_Information .Profile_Comment span {
+  font-size: 15px;
+}
+
+.Profile .NewComment {
+  margin-top: 40px;
+  width: 80%;
+}
+
+.Profile .NewComment .NewComment__Faild {
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 0px 11px -10px black;
+  border: 1px solid #0000004f;
+  margin-bottom: 20px;
+}
+
+.Profile .NewComment .NewComment__Faild input {
+  width: 100%;
+  padding: 10px 0px;
+  outline: none;
+}
+
+.Profile .NewComment .NewComment__Faild img {
+  width: 20px;
+  margin-right: 20px;
+}
+
+.Profile .NewComment .NewComment__Faild textarea {
+  padding: 10px;
+  height: 150px;
+  width: 100%;
+  outline: none;
+}
+
+.Profile .NewComment button {
+  margin-top: 20px;
+  background-color: #131379;
+  border: 1px solid #131379;
+  color: white;
+  padding: 8px 45px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.Profile .NewComment button:hover {
+  border: 1px solid #131379;
+  background-color: transparent;
+  color: #131379;
+}
+
+.Profile .Offers {
+  margin-top: 40px;
+}
+
+.Profile .Offers .Offer__Type {
+  border-radius: 20px;
+  box-shadow: 0px 0px 11px -3px rgba(0, 0, 0, 0.41);
+  background-color: #fff8fb;
+  padding: 20px;
+  display: flex;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.Profile .Offers .Offer__Type img {
+  width: 300px;
+  height: 250px;
+  border-radius: 5px;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content {
+  width: 50%;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content h4 {
+  font-family: 'poping-Bold';
+  font-weight: bolder;
+  font-size: 25px;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content .HowManyBed {
+  display: flex;
+  align-items: center;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content .HowManyBed h5, .Profile .Offers .Offer__Type .Offer__Type__Content .HowManyBed span {
+  font-family: 'poping-Bold';
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content .HowManyBed span {
+  margin: 0px  5px 0px 5px;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content .HowManyBed img {
+  width: 40px !important;
+  height: auto;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content p {
+  padding: 10px 0px;
+  font-family: 'poping-Regular';
+  font-size: 17px;
+  line-height: 25px;
+  color: #4d4d4d;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content .PriceAndReserve {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content .PriceAndReserve button {
+  margin-top: 20px;
+  background-color: #131379;
+  border: 1px solid #131379;
+  color: white;
+  padding: 8px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content .PriceAndReserve button:hover {
+  border: 1px solid #131379;
+  background-color: transparent;
+  color: #131379;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content .PriceAndReserve h1 {
+  font-family: 'poping-Bold';
+  font-weight: bolder;
+  font-size: 28px;
+}
+
+.Profile .Offers .Offer__Type .Offer__Type__Content .PriceAndReserve h1 span {
+  font-family: 'poping-Light';
+  font-size: 16px;
 }

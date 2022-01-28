@@ -1,0 +1,87 @@
+.SideBare {
+  border-radius: 20px;
+  width: 15%;
+  height: 92vh;
+  background-color: #ebebeb;
+  box-shadow: 0px 0px 11px -6px black;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+}
+
+.SideBare h1 {
+  font-family: 'poping-Bold';
+  font-weight: bolder;
+  font-size: 30px;
+  line-height: 80px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+  color: #202020;
+  padding: 30px;
+}
+
+.SideBare ul {
+  height: 100%;
+}
+
+.SideBare li {
+  padding: 17px;
+  border-radius: 10px;
+  font-family: 'poping-Semibold';
+  font-weight: bolder;
+  font-size: 20px;
+  width: 100%;
+  color: #202020;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.SideBare li img {
+  width: 25px;
+  margin-right: 10px;
+}
+
+.SideBare li:hover {
+  background-color: #202020;
+  color: white;
+}
+
+.Dashboard__Centent {
+  width: 100%;
+}
+
+.Dashborad__Haeder {
+  border-radius: 10px;
+  background-color: #ebebeb;
+  box-shadow: 0px 0px 11px -6px black;
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  justify-content: end;
+}
+
+.Dashborad__Haeder img {
+  width: 30px;
+}
+
+.Dashborad__Haeder h5 {
+  padding: 17px;
+  border-radius: 10px;
+  font-family: 'poping-Medium';
+  font-weight: bolder;
+  font-size: 20px;
+  color: #202020;
+}
+
+.Dashboard__Centent__Tables {
+  border-radius: 10px;
+  background-color: #ebebeb;
+  box-shadow: 0px 0px 11px -6px black;
+  padding: 20px;
+  width: 100%;
+  margin-top: 30px;
+  height: 80vh;
+}

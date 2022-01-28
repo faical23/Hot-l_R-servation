@@ -47,5 +47,10 @@
 }
 
 body {
-  background-color: #fdf7fa;
+  background-color: white;
+}
+
+.Dashborad {
+  display: flex;
+  align-items: start;
 }

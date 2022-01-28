@@ -1,15 +1,223 @@
 import '../Assets/Sass/Base.scss'
 import './Profile.scss'
+import Wifi from '../Assets/Img/wifi.png'
+import Facebook from '../Assets/Img/facebook.png'
+import Twitter from '../Assets/Img/twitter.png'
+import Instagram from '../Assets/Img/instagram.png'
+import Browser from '../Assets/Img/browser.png'
+import Piscine from '../Assets/Img/swimming.png'
+import Boite from '../Assets/Img/disco.png'
+import Transport from '../Assets/Img/taxi.png'
+import Restaurant from '../Assets/Img/cutlery.png'
+import Cafee from '../Assets/Img/coffee.png'
+import Fitness from '../Assets/Img/fitness.png'
 
+import HotelIcon from '../Assets/Img/hotelProdil.png'
+import Email from '../Assets/Img/email.png'
+import Phone from '../Assets/Img/phone-call.png'
+import Localisation from '../Assets/Img/location.png'
+import star from '../Assets/Img/star.png'
+import User from '../Assets/Img/user.png'
 
+import HotelRooms from '../Assets/Img/HotelRoom.jpg'
+import RoomBed from '../Assets/Img/bed.png'
+import roomTwoBed from '../Assets/Img/roomTwoBed.jpg'
+import Villa from '../Assets/Img/villa.jpg'
+import Appartement from '../Assets/Img/appartement.jpg'
+
+import Réservation from '../Compenents/Réservation'
+
+import { connect } from "react-redux";
 
 const Profile = (Store)=>{
     return (
         <div className="Profile">
+            {Store.Réserve && <Réservation  Data='99'/>}
             <div  className="Profile__Hero">
                     <h1>Hotel Sofitel morocco</h1>
             </div>
             <div className="Profile_Information">
+                <div className="Profile_Information__Right">
+                        <div className="Profile_Information__Services">
+                                <div className="Localisation">
+                                    <h5 className="TitleSection">Localisation</h5>
+                                    <div className="Localisation_Map">
+                                        <iframe width="100%" height="600" frameBorder="0" scrolling="no" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(hotels)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/sport-gps/">
+                                            gps watches</a>
+                                        </iframe>
+                                    </div>
+                                </div>
+                        </div>
+                        <div className="Informationbusiness">
+                                <h5 className="TitleSection">Informations</h5>
+                                <div className="Informationbusiness_Items">
+                                        <div className="Informationbusiness_item">
+                                            <img src={HotelIcon} alt="" />
+                                            <h6>Hotel Sofitel Morocco</h6>
+                                        </div>
+                                        <div className="Informationbusiness_item">
+                                            <img src={Email} alt="" />
+                                            <h6>Agadir,morocco</h6>
+                                        </div>
+                                        <div className="Informationbusiness_item">
+                                            <img src={Phone} alt="" />
+                                            <h6>Hotel@gmail.com</h6>
+                                        </div>
+                                        <div className="Informationbusiness_item">
+                                            <img src={Localisation} alt="" />
+                                            <h6>+212619887328</h6>
+                                        </div>
+                                </div>
+                        </div>
+                        <div className="Profile_Services">
+                                <h5 className="TitleSection">services</h5>
+                                <div  className="Profile_Services_items">
+                                    <div className="Profile_Services_items_item">
+                                        <img src={Wifi} alt="" />
+                                        <h6>Wifi</h6>
+                                    </div>
+                                    <div className="Profile_Services_items_item">
+                                        <img src={Piscine} alt="" />
+                                        <h6>Piscine</h6>
+                                    </div>
+                                    <div className="Profile_Services_items_item">
+                                        <img src={Boite} alt="" />
+                                        <h6>Boite</h6>
+                                    </div>
+                                    <div className="Profile_Services_items_item">
+                                        <img src={Transport} alt="" />
+                                        <h6>Transport</h6>
+                                    </div>
+                                    <div className="Profile_Services_items_item">
+                                        <img src={Restaurant} alt="" />
+                                        <h6>Restaurant</h6>
+                                    </div>
+                                    <div className="Profile_Services_items_item">
+                                        <img src={Cafee} alt="" />
+                                        <h6>Café</h6>
+                                    </div>
+                                    <div className="Profile_Services_items_item">
+                                        <img src={Fitness} alt="" />
+                                        <h6>Salle fitness</h6>
+                                    </div>
+                                </div>
+                        </div>
+                        <div className="Profile_SocialMedia">
+                                <h5 className="TitleSection">Social media</h5>
+                                <div className="Profile_SocialMedia__Icons">
+                                    <img src={Facebook} alt="" />
+                                    <img src={Instagram} alt="" />
+                                    <img src={Twitter} alt="" />
+                                    <img src={Browser} alt="" />
+                                </div>
+                        </div>
+                        <div className="Profile_Revwies">
+                                <h5 className="TitleSection">Reviews</h5>
+                            <div className="reviews">
+                                <div className="reviews__card">
+                                    <div className="reviews__card__all">
+                                        <h3><span>4.7</span>/5</h3>
+                                        <div className="reviews__card__all__starts">
+                                            <div className="start">
+                                                    <img src={star} alt="" />
+                                                    <img src={star} alt="" />
+                                                    <img src={star} alt="" />
+                                                    <img src={star} alt="" />
+                                                    <img src={star} alt="" />
+                                            </div>
+                                        </div>
+                                        <p>240 reviews</p>
+                                    </div>
+                                    <div className="reviews__card__Allbars">
+                                        <div className="reviews__card__Allbars_singleBars">
+                                            <p>1</p>
+                                            <div className="single_Bar">
+                                                <div className="bar_yellow" style={{width:'50%'}}>
+                                                </div>
+                                            </div>
+                                            <p>(40)</p>
+                                        </div>
+                                        <div className="reviews__card__Allbars_singleBars">
+                                            <p>1</p>
+                                            <div className="single_Bar">
+                                                <div className="bar_yellow" style={{width:'50%'}}>
+                                                </div>
+                                            </div>
+                                            <p>(40)</p>
+                                        </div>
+                                        <div className="reviews__card__Allbars_singleBars">
+                                            <p>1</p>
+                                            <div className="single_Bar">
+                                                <div className="bar_yellow" style={{width:'50%'}}>
+                                                </div>
+                                            </div>
+                                            <p>(40)</p>
+                                        </div>
+                                        <div className="reviews__card__Allbars_singleBars">
+                                            <p>1</p>
+                                            <div className="single_Bar">
+                                                <div className="bar_yellow" style={{width:'50%'}}>
+                                                </div>
+                                            </div>
+                                            <p>(40)</p>
+                                        </div>
+                                        <div className="reviews__card__Allbars_singleBars">
+                                            <p>1</p>
+                                            <div className="single_Bar">
+                                                <div className="bar_yellow" style={{width:'50%'}}>
+                                                </div>
+                                            </div>
+                                            <p>(40)</p>
+                                        </div>
+                                    </div>
+                                    <button>See all reviews</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className="Profile_Comment">
+                            <div className="reviewsPeaple__single">
+                                <div className="reviewsPeaple__single_Info">
+                                        <h4>FB</h4>
+                                        <div>
+                                            <h6>Fiacal bahsis</h6>
+                                            <span>21 april, 2022</span>
+                                        </div>
+                                </div>
+                                    <p>This guy is everything you could want. Great code, great price, great communication. Don't hesitate, this is your guy!</p>
+                            </div>
+                            <div className="reviewsPeaple__single">
+                                <div className="reviewsPeaple__single_Info">
+                                        <h4>FB</h4>
+                                        <div>
+                                            <h6>Fiacal bahsis</h6>
+                                            <span>21 april, 2022</span>
+                                        </div>
+                                </div>
+                                    <p> great price, great communication</p>
+                            </div>
+                            <div className="reviewsPeaple__single">
+                                <div className="reviewsPeaple__single_Info">
+                                        <h4>FB</h4>
+                                        <div>
+                                            <h6>Fiacal bahsis</h6>
+                                            <span>21 april, 2022</span>
+                                        </div>
+                                </div>
+                                    <p>This guy is everything you could want. Great code, great price, great communication. Don't hesitate, this is your guy!</p>
+                            </div>
+                        </div>
+                        <div className="NewComment">
+                            <div className="NewComment__Faild">
+                                <img src={User} alt="" />
+                                <input type="text" placeholder="Your name" />
+                            </div>
+                            <div  className="NewComment__Faild" >
+                                <textarea  placeholder="Write Your Message"></textarea>
+                            </div>
+                            <button>Ajouter</button>
+                        </div>
+                </div>
                 <div className="Profile_Information__left">
                     <div className="Description">
                         <h5>Description</h5>
@@ -17,19 +225,117 @@ const Profile = (Store)=>{
                             Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.
                         </p>
                     </div>
-
-                </div>
-                <div className="Profile_Information__Right">
-                        <div className="Profile_Information__Services">
-                                <div className="Localisation">
-                                    <h5>Localisation</h5>
-
-                                </div>
+                    <div className="Offers">
+                        <h5 className="TitleSection">Our Offers</h5>
+                        <div className="Offer__Type">
+                            <img src={HotelRooms} alt="" />
+                            <div className="Offer__Type__Content">
+                                    <h4>Room One bed</h4>
+                                    <div className="HowManyBed">
+                                        <h5>1</h5>
+                                        <span>X</span>
+                                        <img src={RoomBed} alt="" />
+                                    </div>
+                                    <p>
+                                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
+                                    </p>
+                                    <div className="PriceAndReserve">
+                                            <h1>130$<span>/Night</span></h1>
+                                            <button onClick={() =>Store.OpenRéserve()}>Book now</button>
+                                    </div>
+                            </div>
                         </div>
+                        <div className="Offer__Type">
+                            <img src={roomTwoBed} alt="" />
+                            <div className="Offer__Type__Content">
+                                    <h4>Room Two bed</h4>
+                                    <div className="HowManyBed">
+                                        <h5>1</h5>
+                                        <span>X</span>
+                                        <img src={RoomBed} alt="" />
+                                    </div>
+                                    <p>
+                                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
+                                    </p>
+                                    <div className="PriceAndReserve">
+                                            <h1>130$<span>/Night</span></h1>
+                                            <button>Book now</button>
+                                    </div>
+                            </div>
+                        </div>
+                        <div className="Offer__Type">
+                            <img src={Villa} alt="" />
+                            <div className="Offer__Type__Content">
+                                    <h4>Villa</h4>
+                                    <div className="HowManyBed">
+                                        <h5>1</h5>
+                                        <span>X</span>
+                                        <img src={RoomBed} alt="" />
+                                    </div>
+                                    <p>
+                                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
+                                    </p>
+                                    <div className="PriceAndReserve">
+                                            <h1>130$<span>/Night</span></h1>
+                                            <button>Book now</button>
+                                    </div>
+                            </div>
+                        </div>
+                        <div className="Offer__Type">
+                            <img src={Appartement} alt="" />
+                            <div className="Offer__Type__Content">
+                                    <h4>Appartement</h4>
+                                    <div className="HowManyBed">
+                                        <h5>1</h5>
+                                        <span>X</span>
+                                        <img src={RoomBed} alt="" />
+                                    </div>
+                                    <p>
+                                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
+                                    </p>
+                                    <div className="PriceAndReserve">
+                                            <h1>130$<span>/Night</span></h1>
+                                            <button>Book now</button>
+                                    </div>
+                            </div>
+                        </div>
+                        <div className="Offer__Type">
+                            <img src={roomTwoBed} alt="" />
+                            <div className="Offer__Type__Content">
+                                    <h4>Room multiple bed</h4>
+                                    <div className="HowManyBed">
+                                        <h5>1</h5>
+                                        <span>X</span>
+                                        <img src={RoomBed} alt="" />
+                                    </div>
+                                    <p>
+                                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
+                                    </p>
+                                    <div className="PriceAndReserve">
+                                            <h1>130$<span>/Night</span></h1>
+                                            <button>Book now</button>
+                                    </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
     )
 }
+//// DATA WANT TO GET FROM STORE redux
 
-export default Profile;
+const GetState = (state) =>{
+    return {
+        Réserve:state?.Réserve,
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+      OpenRéserve: () => dispatch({ type: 'OPEN_RESERVE'}),
+    }
+  }
+
+export default connect(GetState,mapDispatchToProps) (Profile);

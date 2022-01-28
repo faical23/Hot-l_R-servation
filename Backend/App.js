@@ -12,7 +12,6 @@ const DB = require('./Config')
 const RouterV1 = require('./Routers');
 app.use("/api/v1", RouterV1);
 
-
 app.get('/', (req, res) => {
     res.send('Welcome to my Api')
 })  

@@ -4,9 +4,11 @@ import HotelsPage from '../Views/Hotels'
 import ProfileHotel from '../Views/ProfileHotel'
 import CountactUsPage from '../Views/ContactUs'
 import NotFoundPage from '../Views/404'
+import DashboardStatistique from '../Views/Dashboard/Statistique'
 
 /// LAYOUT
 import PageLayout from '../Container/Page'
+import DashboardLayout from '../Container/Dashboard'
 
 import {
     BrowserRouter,
@@ -24,6 +26,14 @@ export default function RouterCmpt(){
               <Routes>
                   <Route path="/Contact" element={<CountactUsPage/>} />
               </Routes>
+
+                <DashboardLayout>
+                  <Routes>
+                        <Route path="/Dashboard/Statistique" element={<DashboardStatistique/>} />
+                  </Routes>
+                </DashboardLayout>
+
+
                 <PageLayout>
                     <Routes>
                         <Route path="/" element={<Home />} />
