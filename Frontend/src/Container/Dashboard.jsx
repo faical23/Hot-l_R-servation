@@ -1,5 +1,6 @@
 import SideBar from '../Layout/SideBare'
 import Header from '../Layout/HeaderDashboard'
+import { Outlet } from 'react-router-dom';
 
 
 const  DashboardLayout = ({ children }) => {
@@ -9,7 +10,7 @@ const  DashboardLayout = ({ children }) => {
                     <SideBar/>
                     <div className="Dashboard__Centent">
                         <Header/>
-                        {children}
+                        <Outlet/>
                     </div>
         </div>
 

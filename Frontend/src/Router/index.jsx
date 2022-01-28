@@ -23,27 +23,18 @@ export default function RouterCmpt(){
   return (
     <div className="Router">
           <BrowserRouter>
-              <Routes>
-                  <Route path="/Contact" element={<CountactUsPage/>} />
-              </Routes>
-
-                <DashboardLayout>
                   <Routes>
-                        <Route path="/Dashboard/Statistique" element={<DashboardStatistique/>} />
-                  </Routes>
-                </DashboardLayout>
-
-
-                <PageLayout>
-                    <Routes>
+                    <Route path="/Contact" element={<CountactUsPage/>} />
+                    <Route path="/" element={<PageLayout/>} >
                         <Route path="/" element={<Home />} />
-                        <Route path="/Hotels" element={<HotelsPage />} />
-                        <Route path="/Hotel/:id" element={<ProfileHotel />} />
-                        <Route path="/NotFound" element={<NotFoundPage />} />
-                    </Routes>
-                </PageLayout>
-
-            </BrowserRouter>
+                        <Route path="Hotels" element={<HotelsPage />} /> 
+                        <Route path="Hotel/:id" element={<ProfileHotel />} /> 
+                    </Route>
+                    <Route path="/Dashboard" element={<DashboardLayout/>} >
+                        <Route path="Statistique" element={<DashboardStatistique />} />
+                    </Route>
+                  </Routes>
+          </BrowserRouter>
 
     </div>
   )

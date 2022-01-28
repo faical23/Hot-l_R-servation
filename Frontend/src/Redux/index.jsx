@@ -5,7 +5,7 @@ const UserState = {
     Réserve:false
 }
 
-const StoreReducer = (state = UserState, action) =>{
+const StoreReducer = (UserState, action) =>{
     if(action.type === 'OPEN_CONNEXION')
         return{...UserState,Inscription : true,Login : false}
     if(action.type === 'OPEN_LOGIN')
@@ -14,7 +14,7 @@ const StoreReducer = (state = UserState, action) =>{
         return{...UserState,Réserve : true}
     if(action.type === 'CLOSE_POPUP')
         return{...UserState,Inscription : false,Login : false,Réserve:false}
-    return state
+    // return UserState
 }
 
 export default StoreReducer
