@@ -6,7 +6,7 @@ import Header from '../../Layout/HeaderDashboard'
 function DashboradStatistique() {
   return (
       <div  className="Dashboard__Centent__Tables">
-          Dashboard Réservation
+          Dashboard Settings
       </div>
   );
 }

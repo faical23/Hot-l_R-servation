@@ -33,6 +33,4 @@ const mapDispatchToProps = (dispatch) => {
     SwitchToInscription: () => dispatch({ type: 'OPEN_CONNEXION'}),
   }
 }
-
-
 export default connect(null,mapDispatchToProps)(Login);

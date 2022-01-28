@@ -5,6 +5,10 @@ import ProfileHotel from '../Views/ProfileHotel'
 import CountactUsPage from '../Views/ContactUs'
 import NotFoundPage from '../Views/404'
 import DashboardStatistique from '../Views/Dashboard/Statistique'
+import DashboardRooms from '../Views/Dashboard/Rooms'
+import DashboardClients from '../Views/Dashboard/Client'
+import DashboardBooking from '../Views/Dashboard/Réservation'
+import DashboardSettings from '../Views/Dashboard/Settings'
 
 /// LAYOUT
 import PageLayout from '../Container/Page'
@@ -27,12 +31,17 @@ export default function RouterCmpt(){
                     <Route path="/Contact" element={<CountactUsPage/>} />
                     <Route path="/" element={<PageLayout/>} >
                         <Route path="/" element={<Home />} />
-                        <Route path="Hotels" element={<HotelsPage />} /> 
+                        <Route path="Hotels" element={<HotelsPage />} />
                         <Route path="Hotel/:id" element={<ProfileHotel />} /> 
                     </Route>
                     <Route path="/Dashboard" element={<DashboardLayout/>} >
                         <Route path="Statistique" element={<DashboardStatistique />} />
+                        <Route path="Rooms" element={<DashboardRooms />} />
+                        <Route path="Clients" element={<DashboardClients />} />
+                        <Route path="Reservations" element={<DashboardBooking />} />
+                        <Route path="Settings" element={<DashboardSettings />} />
                     </Route>
+                    <Route path="*" element={<NotFoundPage />} />
                   </Routes>
           </BrowserRouter>
 

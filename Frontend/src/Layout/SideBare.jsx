@@ -6,7 +6,9 @@ import Setting from '../Assets/Img/setting.png'
 import Logout from '../Assets/Img/logout.png'
 import RoomsIcons from '../Assets/Img/RoomsIcons.png'
 import customer from '../Assets/Img/customer.png'
+import HotelIcon from '../Assets/Img/HotelSideBar.png'
 
+import { Link } from 'react-router-dom';
 
 
 
@@ -15,11 +17,26 @@ function SideBar() {
     <div className="SideBare">
         <h1>Dashboard</h1>
         <ul>
-          <li><img src={Chart} alt="" /> Statistique</li>
-          <li><img src={RoomsIcons} alt="" />Rooms</li>
-          <li><img src={customer} alt="" />Clients</li>
-          <li><img src={Booking} alt="" />Réservations</li>
-          <li><img src={Setting} alt="" />Settings</li>
+            <Link to="/Hotel/123">
+              <li><img src={HotelIcon} alt="" /> Profile</li>
+            </Link>
+            <Link to="/Dashboard/Statistique">
+              <li>
+                <img src={Chart} alt="" /> Statistique
+              </li>
+            </Link>
+            <Link to="/Dashboard/Rooms">
+                <li><img src={RoomsIcons} alt="" />Rooms</li>
+            </Link>
+            <Link to="/Dashboard/Clients">
+                <li><img src={customer} alt="" />Clients</li>
+            </Link>
+            <Link to="/Dashboard/Reservations">
+                <li><img src={Booking} alt="" />Réservations</li>
+            </Link>
+            <Link to="/Dashboard/Settings">
+                <li><img src={Setting} alt="" />Settings</li>
+            </Link>
         </ul>
         <li><img src={Logout} alt="" />Logout</li>
     </div>
