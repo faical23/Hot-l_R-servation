@@ -25,7 +25,7 @@ module.exports={
             console.log(err)
         }
     },
-    Add: async (req, res) => {
+    Add:async (req, res) => {
         const HashPassword = await Helper.HashPassword(req.body.Password)
         const Hotel = {
             Name:req.body.Name,
@@ -34,7 +34,6 @@ module.exports={
             Adress:req.body.Adress,
             Phone:req.body.Phone,
             Password:HashPassword,
-            Reviews:0,
             CoverImg:'',
             Image:[],
             Website:req.body.Website,
@@ -45,13 +44,14 @@ module.exports={
             Hashtag:req.body.Hashtag,
             Service:req.body.Service,
             Vérified:false, 
+            Comment:[]
         }
         try{
             new HotelSchema(Hotel)
                 .save()
-                .then(async (Hotel)=>{
-                    const token = await Helper.CreateJwt(Hotel._id,86400)
-                    return res.status(201).send({token})
+                .then(async (DataHotel)=>{
+                    const token = await Helper.CreateJwt(DataHotel._id,86400)
+                    return res.status(201).send({DataHotel})
                 })
                 .catch(err =>{
                     return res.status(400).send(err)

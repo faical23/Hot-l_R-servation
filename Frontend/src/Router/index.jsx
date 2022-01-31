@@ -25,7 +25,7 @@ import {
 export default function RouterCmpt(){
 
   return (
-    <div className="Router">
+    <>
           <BrowserRouter>
                   <Routes>
                     <Route path="/Contact" element={<CountactUsPage/>} />
@@ -45,6 +45,6 @@ export default function RouterCmpt(){
                   </Routes>
           </BrowserRouter>
 
-    </div>
+    </>
   )
 }

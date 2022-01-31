@@ -4,7 +4,6 @@ const port = 3030
 app.use(express.json())
 const cors = require('cors')
 app.use(cors())
-
 /// IMPORT DB
 const DB = require('./Config')
 

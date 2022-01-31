@@ -1,4 +1,5 @@
 const CommenteSchema  = require('../Modules/Comment')
+const HotelSchema = require('../Modules/Hotel')
 
 module.exports={
     GetCommentHotel: async (req, res) => {
@@ -19,8 +20,11 @@ module.exports={
         try{
             new CommenteSchema(Comment)
             .save()
-            .then(async (Comment)=>{
-                return res.status(201).send({Comment})
+            .then(async (CommentHotel)=>{
+                HotelSchema.Comment.push(CommentHotel).save()
+                // HotelSchema.save();
+                return res.status(201).send("success")
+                
             })
             .catch(err =>{
                 return res.status(400).send(err)

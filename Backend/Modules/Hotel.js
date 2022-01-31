@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const Hotel = mongoose.Schema({
     Name:{type:String},
     City:{type:String},
@@ -6,7 +7,6 @@ const Hotel = mongoose.Schema({
     Adress:{type:String},
     Phone:{type:String},
     Password:{type:String},
-    Reviews:{type:Number},
     CoverImg:{type:String},
     Image:{type:Array},
     Website:{type:String},
@@ -17,7 +17,7 @@ const Hotel = mongoose.Schema({
     Hashtag:{type:Array},
     Service:{Type:Array},
     Vérified:{Type:Boolean},
-},{timestamps:true})
+    Comment:[{type:mongoose.Schema.Types.ObjectId,ref:'Comment'}]
+},{timestamps:true})  
 mongoose.model('Hotel',Hotel);
-  
 module.exports = mongoose.model('Hotel', Hotel);

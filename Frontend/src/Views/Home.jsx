@@ -15,6 +15,8 @@ import review from '../Assets/Img/review.png'
 import PinIcons from '../Assets/Img/pin.png'
 
 
+import ExploreHotels from '../Compenents/ExploreHotels'
+
 
 function Home() {
   return (
@@ -93,98 +95,7 @@ function Home() {
         </div>
       </div>
       <div className="Tophotels mt-20">
-            <div className="Tophotels__Title">
-                        <h6>Top hotels</h6>
-                  <h1>Explore our hotels</h1>
-                  <img src={HotelIcons} alt="" />
-            </div>
-
-          <div className="Tophotels__hotels">
-                        <div  className="Tophotels__hotels__single">
-                              <img className="HotelImg" src={HotelImg} alt="" />
-                              <h2>enjoy to the beauty hotel Agadir</h2>
-                              <p>Agadir , Morocco</p>
-                              <div className="ReviewsHotel">
-                                    <button>
-                                          <img src={RateIcon} alt="" />
-                                          4.6
-                                    </button>
-                                    <p>(2.5K reviews)</p>
-                              </div>
-                        </div>
-                        <div  className="Tophotels__hotels__single">
-                              <img className="HotelImg" src={HotelImg} alt="" />
-                              <h2>enjoy to the beauty hotel Agadir</h2>
-                              <p>Agadir , Morocco</p>
-                              <div className="ReviewsHotel">
-                                    <button>
-                                          <img src={RateIcon} alt="" />
-                                          4.6
-                                    </button>
-                                    <p>(2.5K reviews)</p>
-                              </div>
-                        </div>
-                        <div  className="Tophotels__hotels__single">
-                              <img className="HotelImg" src={HotelImg} alt="" />
-                              <h2>enjoy to the beauty hotel Agadir</h2>
-                              <p>Agadir , Morocco</p>
-                              <div className="ReviewsHotel">
-                                    <button>
-                                          <img src={RateIcon} alt="" />
-                                          4.6
-                                    </button>
-                                    <p>(2.5K reviews)</p>
-                              </div>
-                        </div>
-                        <div  className="Tophotels__hotels__single">
-                              <img className="HotelImg" src={HotelImg} alt="" />
-                              <h2>enjoy to the beauty hotel Agadir</h2>
-                              <p>Agadir , Morocco</p>
-                              <div className="ReviewsHotel">
-                                    <button>
-                                          <img src={RateIcon} alt="" />
-                                          4.6
-                                    </button>
-                                    <p>(2.5K reviews)</p>
-                              </div>
-                        </div>
-                        <div  className="Tophotels__hotels__single">
-                              <img className="HotelImg" src={HotelImg} alt="" />
-                              <h2>enjoy to the beauty hotel Agadir</h2>
-                              <p>Agadir , Morocco</p>
-                              <div className="ReviewsHotel">
-                                    <button>
-                                          <img src={RateIcon} alt="" />
-                                          4.6
-                                    </button>
-                                    <p>(2.5K reviews)</p>
-                              </div>
-                        </div>
-                        <div  className="Tophotels__hotels__single">
-                              <img className="HotelImg" src={HotelImg} alt="" />
-                              <h2>enjoy to the beauty hotel Agadir</h2>
-                              <p>Agadir , Morocco</p>
-                              <div className="ReviewsHotel">
-                                    <button>
-                                          <img src={RateIcon} alt="" />
-                                          4.6
-                                    </button>
-                                    <p>(2.5K reviews)</p>
-                              </div>
-                        </div>
-                        <div  className="Tophotels__hotels__single">
-                              <img className="HotelImg" src={HotelImg} alt="" />
-                              <h2>enjoy to the beauty hotel Agadir</h2>
-                              <p>Agadir , Morocco</p>
-                              <div className="ReviewsHotel">
-                                    <button>
-                                          <img src={RateIcon} alt="" />
-                                          4.6
-                                    </button>
-                                    <p>(2.5K reviews)</p>
-                              </div>
-                        </div>
-          </div>
+            <ExploreHotels/>
       </div>
       <div className="Statistique mt-20">
             <div className="Statistique__Img">
