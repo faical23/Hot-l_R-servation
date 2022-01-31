@@ -10,7 +10,7 @@ module.exports={
     },
     Get: async (req, res) => {
         try{
-            const Hotels =await HotelSchema.find()
+            const Hotels =await HotelSchema.find().populate('Comment')
             return res.status(200).json(Hotels)
         }catch(err){
             return res.status(400).json(err)
@@ -44,7 +44,8 @@ module.exports={
             Hashtag:req.body.Hashtag,
             Service:req.body.Service,
             Vérified:false, 
-            Comment:[]
+            Comment:[],
+            StartPrice:req.body.StartPrice
         }
         try{
             new HotelSchema(Hotel)

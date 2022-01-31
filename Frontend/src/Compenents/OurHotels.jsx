@@ -1,8 +1,10 @@
-import HotelIcons from '../Assets/Img/HotelIcons.png'
 import HotelImg from '../Assets/Img/HotelImg.jpg'
-import RateIcon from '../Assets/Img/star.png'
 import {useEffect,useState} from 'react'
 import API_URL from '../Config.js'
+import Star from '../Assets/Img/star.png'
+import { Link } from 'react-router-dom';
+
+
 
 const Hotel = (Hotel) =>{
     const Rate = Hotel.SingleHotel.Comment
@@ -23,50 +25,43 @@ const Hotel = (Hotel) =>{
 
     }
     return (
-        <div  className="Tophotels__hotels__single">
-            <img className="HotelImg" src={HotelImg} alt="" />
-            <h2>enjoy to the beauty {Hotel.SingleHotel.Name}</h2>
-            <p>{Hotel.SingleHotel.Adress} , {Hotel.SingleHotel.City}</p>
-            <div className="ReviewsHotel">
-                <button>
-                    <img src={RateIcon} alt="" />
-                    4/5
-                </button>
-                <p>({Rate.length} reviews)</p>
+        <div className="HotelPage__Hotels__Item">
+            <img className="HotelPage__Hotel_Img" src={HotelImg} alt="" />
+            <h2>{Hotel.SingleHotel.Name}</h2>
+            <div className="HotelPage__Hotel__Local">
+                <h6>{Hotel.SingleHotel.Adress},{Hotel.SingleHotel.City}</h6>
+                <div className="Rate">
+                        <img src={Star} alt="" />
+                        <h5>{CalculeAvgRate()}</h5>
+                </div>
             </div>
-    </div>
+            <h3>{Hotel.SingleHotel.StartPrice}DH<span>/Night</span></h3>
+                <Link to={`/Hotel/${Hotel.SingleHotel._id}`}>
+                    <button>Visit profil</button>
+                </Link>
+        </div>
     )
 
 }
 
 
-function ExploreHotels() {
+function ExploreHotels(Number) {
+    console.log(Number.NumberHotels)
     const [Hotels,SetHotels] = useState([])
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch(`${API_URL}/api/v1/Hotel`)
+    useEffect(async() => {
+            const res = await fetch(`${API_URL}/api/v1/Hotel?limit=70`);
             const ParseRes = await res.json();
             SetHotels(ParseRes)
-        }
-        fetchData()
-        .catch(console.error);
     },[]); 
-    console.log(Hotels)
+    // console.log(Hotels);
     
     const OurHotels =  Hotels.map(SingleHotel => {
         return (<Hotel key={SingleHotel._id} SingleHotel={SingleHotel} />)
     })
   return (
-        <>
-            <div className="Tophotels__Title">
-                        <h6>Top hotels</h6>
-                  <h1>Explore our hotels</h1>
-                  <img src={HotelIcons} alt="" />
-            </div>
-            <div className="Tophotels__hotels">
-                {OurHotels}
-            </div>
-        </>
+      <>
+        {OurHotels}
+      </>
   );
 }
 

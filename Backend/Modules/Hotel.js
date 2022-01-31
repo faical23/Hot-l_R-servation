@@ -17,7 +17,8 @@ const Hotel = mongoose.Schema({
     Hashtag:{type:Array},
     Service:{Type:Array},
     Vérified:{Type:Boolean},
-    Comment:[{type:mongoose.Schema.Types.ObjectId,ref:'Comment'}]
+    Comment:[{type:mongoose.Schema.Types.ObjectId,ref:'Comment'}],
+    StartPrice:{type:Number}
 },{timestamps:true})  
 mongoose.model('Hotel',Hotel);
 module.exports = mongoose.model('Hotel', Hotel);
