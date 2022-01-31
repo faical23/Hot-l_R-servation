@@ -49,12 +49,10 @@ function ExploreHotels(Number) {
     console.log(Number.NumberHotels)
     const [Hotels,SetHotels] = useState([])
     useEffect(async() => {
-            const res = await fetch(`${API_URL}/api/v1/Hotel?limit=70`);
+            const res = await fetch(`${API_URL}/api/v1/Hotel?limit=${Number.NumberHotels}`);
             const ParseRes = await res.json();
             SetHotels(ParseRes)
-    },[]); 
-    // console.log(Hotels);
-    
+    },[Number]); 
     const OurHotels =  Hotels.map(SingleHotel => {
         return (<Hotel key={SingleHotel._id} SingleHotel={SingleHotel} />)
     })

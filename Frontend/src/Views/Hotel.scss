@@ -8,7 +8,84 @@
         background-image: url(../Assets/Img/HeroBackground.jpg);
         background-repeat: no-repeat;
         background-position:center;
-        background-size: cover;
+        background-size: cover;    
+        ::-webkit-scrollbar {
+            width: 10px;
+            position: relative;
+            top: 20px;
+            border-radius: 30px;
+        }
+        
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background-color: #e4e6e9;
+            border-radius: 10px;
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background-color:rgb(101, 101, 238);
+            border-radius: 10px;
+        }
+        .SearchContainer{
+            position: relative;
+            width: 50%;
+            margin: 0px auto;
+            .ResultSearch{
+                background-color:white;
+                border-radius:30px;
+                height:300px;
+                position:absolute;
+                box-shadow: 0px 0px 11px -6px black;
+                width:100%;
+                overflow-y: scroll;
+                top:52px;
+                p{
+                    color: black;
+                    text-align:start;
+                    padding:10px 20px;
+                    width:100%;
+                    border-radius:30px;
+                    cursor: pointer;
+                    &:hover{
+                        background-color:#f8ecf1;
+                    }
+                }
+                h4{
+                    padding:20px 0px 0px;
+                    font-size:20px;
+                    font-family: 'poping-Semibold';
+                }
+            }
+            .container{
+                svg{
+                    width: 30px;
+                    height: 30px;
+                }
+                display: flex;
+                align-items: center;
+                justify-content:space-between;
+                input{
+                    width: 100%;
+                    padding:15px 0px;
+                    outline:none;
+                }
+                padding:0px 30px;
+                background-color:white;
+                box-shadow: 0px 0px 11px -9px black;
+                margin: 15px auto;
+                border-radius: 80px;
+            }
+            .RemoveInput{
+                cursor: pointer;
+                transition: .3s ease-in-out;
+                &:hover{
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+        }
+
         h1{
             font-family: 'poping-Bold';
             font-weight: bolder;
@@ -33,41 +110,8 @@
             color: white;
 
         }
-        .container{
-            svg{
-                width: 30px;
-                height: 30px;
-            }
-            display: flex;
-            align-items: center;
-            justify-content:space-between;
-            width: 50%;
-            input{
-                width: 100%;
-                padding:15px 0px;
-                outline:none;
-            }
-            padding:0px 30px;
-            background-color:white;
-            box-shadow: 0px 0px 11px -9px black;
-            margin: 15px auto;
-            border-radius: 80px;
-        }
-        button{
-            margin-top: 20px;
-            background-color:rgb(101, 101, 238);
-            border: 1px solid rgb(101, 101, 238);
-            color: white;
-            padding:12px 55px;
-            font-size:19px;
-            cursor: pointer;
-            border-radius: 50px;
-            &:hover{
-                border: 1px solid rgb(101, 101, 238);
-                background-color:transparent;
-                color: rgb(101, 101, 238); 
-            }
-        }
+
+
     }
     .HotelPage__BestLodging,.HotelPage__OurSeelection{
         h1 {
@@ -221,5 +265,6 @@
             }
         }
     }
+
 
 }

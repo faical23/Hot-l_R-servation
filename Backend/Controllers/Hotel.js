@@ -10,7 +10,13 @@ module.exports={
     },
     Get: async (req, res) => {
         try{
-            const Hotels =await HotelSchema.find().populate('Comment')
+            let  Hotels = []
+            if(req.query.limit && req.query.city) {
+                let City = req.query.city
+                Hotels = await HotelSchema.find({City:{$regex: ".*"+City+".*"}}).populate('Comment').limit(req.query.limit)
+            }
+            else if(req.query.limit)
+                Hotels = await HotelSchema.find().populate('Comment').limit(req.query.limit)
             return res.status(200).json(Hotels)
         }catch(err){
             return res.status(400).json(err)
