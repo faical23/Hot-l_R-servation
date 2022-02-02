@@ -8,7 +8,6 @@ import User from '../Assets/Img/user.png'
 import Email from '../Assets/Img/email.png'
 
 function Login(Store) {
-    console.log(Store)
   return (
     <div className="ConnexionZone">   
         <div className="Inscription">

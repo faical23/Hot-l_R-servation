@@ -5,7 +5,6 @@ import Remove from '../Assets/Img/remove.png'
 import { connect } from "react-redux";
 
 function Inscription(Store) {
-    console.log(Store)
   return (
       <div className="ConnexionZone">
         <div className="Inscription">

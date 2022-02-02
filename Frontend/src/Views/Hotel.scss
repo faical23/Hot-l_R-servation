@@ -27,6 +27,10 @@
             background-color:rgb(101, 101, 238);
             border-radius: 10px;
         }
+        .SearchContainerFlex{
+            display:flex;
+            align-items:center
+        }
         .SearchContainer{
             position: relative;
             width: 50%;
@@ -39,7 +43,7 @@
                 box-shadow: 0px 0px 11px -6px black;
                 width:100%;
                 overflow-y: scroll;
-                top:52px;
+                top:65px;
                 p{
                     color: black;
                     text-align:start;
@@ -56,6 +60,15 @@
                     font-size:20px;
                     font-family: 'poping-Semibold';
                 }
+            }
+            .ByCity{
+                border-bottom-left-radius: 80px;
+                border-top-left-radius: 80px;
+
+            }
+            .ByHotel{
+                border-bottom-right-radius: 80px;
+                border-top-right-radius: 80px;
             }
             .container{
                 svg{
@@ -74,7 +87,8 @@
                 background-color:white;
                 box-shadow: 0px 0px 11px -9px black;
                 margin: 15px auto;
-                border-radius: 80px;
+                // border-radius: 80px;
+
             }
             .RemoveInput{
                 cursor: pointer;

@@ -3,6 +3,7 @@ import {useEffect,useState} from 'react'
 import API_URL from '../Config.js'
 import Star from '../Assets/Img/star.png'
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 
 
 
@@ -45,14 +46,14 @@ const Hotel = (Hotel) =>{
 }
 
 
-function ExploreHotels(Number) {
-    console.log(Number.NumberHotels)
+function ExploreHotels(Store) {
     const [Hotels,SetHotels] = useState([])
     useEffect(async() => {
-            const res = await fetch(`${API_URL}/api/v1/Hotel?limit=${Number.NumberHotels}`);
-            const ParseRes = await res.json();
-            SetHotels(ParseRes)
-    },[Number]); 
+                const res = await fetch(`${API_URL}/api/v1/Hotel?limit=${Store.NumberHotels}`);
+                const ParseRes = await res.json();
+                SetHotels(ParseRes)
+                console.log("from explore hotels",Store)
+    },[Store.NumberHotels,Store.CityHotels]); 
     const OurHotels =  Hotels.map(SingleHotel => {
         return (<Hotel key={SingleHotel._id} SingleHotel={SingleHotel} />)
     })
@@ -63,5 +64,14 @@ function ExploreHotels(Number) {
   );
 }
 
-
-export default ExploreHotels;
+const GetState = (state) =>{
+    return {
+        CityHotels:state?.CityHotels,
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+      GetHotelsData: () => dispatch({ type: 'GET_HOTELS_BY_CITY'}),
+    }
+  }
+export default  connect(GetState,mapDispatchToProps)(ExploreHotels);

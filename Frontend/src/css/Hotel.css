@@ -11,6 +11,107 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  /* Track */
+  /* Handle */
+}
+
+.HotelPage .HotelPage__hero ::-webkit-scrollbar {
+  width: 10px;
+  position: relative;
+  top: 20px;
+  border-radius: 30px;
+}
+
+.HotelPage .HotelPage__hero ::-webkit-scrollbar-track {
+  background-color: #e4e6e9;
+  border-radius: 10px;
+}
+
+.HotelPage .HotelPage__hero ::-webkit-scrollbar-thumb {
+  background-color: #6565ee;
+  border-radius: 10px;
+}
+
+.HotelPage .HotelPage__hero .SearchContainerFlex {
+  display: flex;
+  align-items: center;
+}
+
+.HotelPage .HotelPage__hero .SearchContainer {
+  position: relative;
+  width: 50%;
+  margin: 0px auto;
+}
+
+.HotelPage .HotelPage__hero .SearchContainer .ResultSearch {
+  background-color: white;
+  border-radius: 30px;
+  height: 300px;
+  position: absolute;
+  box-shadow: 0px 0px 11px -6px black;
+  width: 100%;
+  overflow-y: scroll;
+  top: 65px;
+}
+
+.HotelPage .HotelPage__hero .SearchContainer .ResultSearch p {
+  color: black;
+  text-align: start;
+  padding: 10px 20px;
+  width: 100%;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.HotelPage .HotelPage__hero .SearchContainer .ResultSearch p:hover {
+  background-color: #f8ecf1;
+}
+
+.HotelPage .HotelPage__hero .SearchContainer .ResultSearch h4 {
+  padding: 20px 0px 0px;
+  font-size: 20px;
+  font-family: 'poping-Semibold';
+}
+
+.HotelPage .HotelPage__hero .SearchContainer .ByCity {
+  border-bottom-left-radius: 80px;
+  border-top-left-radius: 80px;
+}
+
+.HotelPage .HotelPage__hero .SearchContainer .ByHotel {
+  border-bottom-right-radius: 80px;
+  border-top-right-radius: 80px;
+}
+
+.HotelPage .HotelPage__hero .SearchContainer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 30px;
+  background-color: white;
+  box-shadow: 0px 0px 11px -9px black;
+  margin: 15px auto;
+}
+
+.HotelPage .HotelPage__hero .SearchContainer .container svg {
+  width: 30px;
+  height: 30px;
+}
+
+.HotelPage .HotelPage__hero .SearchContainer .container input {
+  width: 100%;
+  padding: 15px 0px;
+  outline: none;
+}
+
+.HotelPage .HotelPage__hero .SearchContainer .RemoveInput {
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.HotelPage .HotelPage__hero .SearchContainer .RemoveInput:hover {
+  width: 35px;
+  height: 35px;
 }
 
 .HotelPage .HotelPage__hero h1 {
@@ -35,46 +136,6 @@
   width: 60%;
   margin: 0px auto;
   color: white;
-}
-
-.HotelPage .HotelPage__hero .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 50%;
-  padding: 0px 30px;
-  background-color: white;
-  box-shadow: 0px 0px 11px -9px black;
-  margin: 15px auto;
-  border-radius: 80px;
-}
-
-.HotelPage .HotelPage__hero .container svg {
-  width: 30px;
-  height: 30px;
-}
-
-.HotelPage .HotelPage__hero .container input {
-  width: 100%;
-  padding: 15px 0px;
-  outline: none;
-}
-
-.HotelPage .HotelPage__hero button {
-  margin-top: 20px;
-  background-color: #6565ee;
-  border: 1px solid #6565ee;
-  color: white;
-  padding: 12px 55px;
-  font-size: 19px;
-  cursor: pointer;
-  border-radius: 50px;
-}
-
-.HotelPage .HotelPage__hero button:hover {
-  border: 1px solid #6565ee;
-  background-color: transparent;
-  color: #6565ee;
 }
 
 .HotelPage .HotelPage__BestLodging h1, .HotelPage .HotelPage__OurSeelection h1 {

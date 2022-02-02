@@ -1,8 +1,10 @@
+import {useFetch} from "../Helpers"
 const UserState = {
     Inscription:false,
     Login:false,
     UserData:{},
-    Réserve:false
+    Réserve:false,
+    CityHotels:[]
 }
 
 const StoreReducer = (UserState, action) =>{
@@ -14,7 +16,15 @@ const StoreReducer = (UserState, action) =>{
         return{...UserState,Réserve : true}
     if(action.type === 'CLOSE_POPUP')
         return{...UserState,Inscription : false,Login : false,Réserve:false}
-    // return UserState
+    if(action.type === 'GET_HOTELS_BY_CITY'){
+        const GetHotel =  async() =>{
+            const Data = await useFetch(action.Méthode,action.EndPoint)
+            console.log("Data",Data)
+            return{...UserState,CityHotels:['113','736']}
+        }
+        GetHotel()
+        // return{...UserState,CityHotels:['bahsis','faical']}
+    }
 }
 
 export default StoreReducer

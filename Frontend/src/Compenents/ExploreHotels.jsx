@@ -39,12 +39,11 @@ const Hotel = (Hotel) =>{
 
 }
 
-
 function ExploreHotels() {
     const [Hotels,SetHotels] = useState([])
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch(`${API_URL}/api/v1/Hotel`)
+            const res = await fetch(`${API_URL}/api/v1/Hotel?limit=10`)
             const ParseRes = await res.json();
             SetHotels(ParseRes)
         }

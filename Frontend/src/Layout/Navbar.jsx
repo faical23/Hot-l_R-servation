@@ -58,7 +58,6 @@ const GetState = (state) =>{
     return {
         Inscription:state?.Inscription,
         Login:state?.Login,
-        Name:state?.Name,
     }
 }
 const mapDispatchToProps = (dispatch) => {

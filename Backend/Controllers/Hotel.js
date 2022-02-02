@@ -1,6 +1,6 @@
 const HotelSchema = require('../Modules/Hotel')
 const Helper = require('../Helpers')
-const Db = require('../Config')
+
 
 module.exports={
     ExistEmail: async (req,res)=>{
@@ -14,6 +14,10 @@ module.exports={
             if(req.query.limit && req.query.city) {
                 let City = req.query.city
                 Hotels = await HotelSchema.find({City:{$regex: ".*"+City+".*"}}).populate('Comment').limit(req.query.limit)
+            }
+            else if(req.query.limit && req.query.Name) {
+                let Name = req.query.Name
+                Hotels = await HotelSchema.find({Name:{$regex: ".*"+Name+".*"}}).populate('Comment').limit(req.query.limit)
             }
             else if(req.query.limit)
                 Hotels = await HotelSchema.find().populate('Comment').limit(req.query.limit)
