@@ -95,27 +95,28 @@
     }
     .rightPart{
         width: 50%;
-        background-color:green;
+        background-image:url('../Assets//Img/ContactImg.jpg');
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center center;
         form{
-            background-color: #4480abdc;
+            background-color: #ffffffae;
             width: 60%;
             padding: 80px 40px;
             margin: 100px auto;
             border-radius: 10px;
             input,textarea{
-                border-bottom: 1px solid #ffffff;
+                border: 1px solid black;
+                border-radius: 7px;
                 background: none;
                 box-shadow: none;
-                border-radius: 0px;
-                padding-bottom:5px ;
-                margin:60px  auto;
-                width: 80%;
-                padding: 0px 0px 10px 0px;
-                color: white !important;
+                padding-bottom: 5px;
+                margin: 30px auto;
+                width: 90%;
+                color: black !important;
                 transition: 0.3s ease-in-out;
-
+                padding: 10px 20px;
+                margin: 20px auto;
                 &:focus{
                     border-bottom: 1px solid red;
                     transition: 0.3s ease-in-out;
@@ -123,24 +124,29 @@
                 }
             }
             textarea{
-                margin: 0px 0px 50px 0px;
-                width: 80%;
+                margin: 20px auto;
+                width: 90%;
                 height: 80px;
                 position: relative;
-                left: 50px;
             }
             ::placeholder{
-                color: white;
+                color: black;
             }
             .btn__form__contact{
-                width: 90%;
-                text-align: end;
+                width: 100%;
                 button{
+                    -webkit-appearance: button;
+                    background-color: black;
+                    background-image: none;
+                    color: white;
+                    border-radius: 10px;
+                    width: 90%;
                     padding: 10px 45px;
+                    margin: 0px auto;
                     &:hover{
-                        background: transparent;
-                        color: white;
-                        border: 1px solid white;
+                        border: 1px solid black;
+                        background-color:transparent;
+                        color: black
                     }
                 }
             }

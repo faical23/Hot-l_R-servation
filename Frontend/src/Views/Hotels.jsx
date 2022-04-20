@@ -5,10 +5,13 @@ import PinIcons from '../Assets/Img/pin.png'
 import OurHotels from '../Compenents/OurHotels'
 import {useState} from 'react'
 import SearchHotel from '../Compenents/SearchHotels'
+import { connect } from "react-redux";
+import HotelTypes from "../Compenents/HotlesType"
 
 function Home() {
 
     const [NumberHotel,SetNumberHotel] = useState(10)
+    
 
   return (
     <>
@@ -18,26 +21,15 @@ function Home() {
                 </div>
                 <div className="HotelPage__BestLodging  mt-20">
                     <h1>find the best lodging</h1>
-                    
                     <div className="HotelPage__Item">
-                        <h2>Appartement</h2>
-                        <h2>Hotels</h2>
-                        <h2>Villa</h2>
-                        <h2>Boarding house</h2>
-
+                        <HotelTypes/>
                     </div>
                 </div>
-                <div className="HotelPage__OurSeelection mt-20">
-                    <h1>curious ? browse our selection new</h1>     
-                    <div className="HotelPage__Hotels mt-20">
-                        <OurHotels NumberHotels={NumberHotel} />
-                    </div>
-                </div>
+                <OurHotels NumberHotels={NumberHotel} />
                 <div className="BtnZone">
                     <button className="SeeMore" onClick={()=>{SetNumberHotel(prevState =>{return prevState+10})}}>See More</button>
                 </div>
                 <div className="CardFinal  mt-20">
-
                     <div className="CardFinal_Card">
                     <h1>Prepare yourself & let's explore our beauty hotels of the words</h1>
                     <img src={PinIcons} alt="" />
@@ -52,4 +44,9 @@ function Home() {
   );
 }
 
-export default Home;
+const GetState = (state) =>{
+    return {
+        CityHotels:state?.CityHotels,
+    }
+}
+export default connect(GetState)(Home);

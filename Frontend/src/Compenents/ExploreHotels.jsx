@@ -58,7 +58,7 @@ function ExploreHotels() {
   return (
         <>
             <div className="Tophotels__Title">
-                        <h6>Top hotels</h6>
+                 <h6>Top hotels</h6>
                   <h1>Explore our hotels</h1>
                   <img src={HotelIcons} alt="" />
             </div>

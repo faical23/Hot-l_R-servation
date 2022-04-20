@@ -11,16 +11,18 @@ module.exports={
     Get: async (req, res) => {
         try{
             let  Hotels = []
-            if(req.query.limit && req.query.city) {
-                let City = req.query.city
-                Hotels = await HotelSchema.find({City:{$regex: ".*"+City+".*"}}).populate('Comment').limit(req.query.limit)
-            }
-            else if(req.query.limit && req.query.Name) {
-                let Name = req.query.Name
-                Hotels = await HotelSchema.find({Name:{$regex: ".*"+Name+".*"}}).populate('Comment').limit(req.query.limit)
-            }
+            if(req.query.limit && req.query.city)
+                Hotels = await HotelSchema.find({City:{$regex: ".*"+req.query.city+".*"}}).populate('Comment').limit(req.query.limit)
+            else if(req.query.limit && req.query.Name) 
+                Hotels = await HotelSchema.find({Name:{$regex: ".*"+req.query.Name+".*"}}).populate('Comment').limit(req.query.limit)
             else if(req.query.limit)
                 Hotels = await HotelSchema.find().populate('Comment').limit(req.query.limit)
+            else if(req.query.city)
+                Hotels = await HotelSchema.find({City:req.query.city}).populate('Comment')
+            else if(req.query.TypeHotel){
+                console.log(req.query.Type)
+                Hotels = await HotelSchema.find({"TypeHotel":{ $search: req.query.Type }}).populate('Comment')
+            }
             return res.status(200).json(Hotels)
         }catch(err){
             return res.status(400).json(err)
@@ -29,7 +31,7 @@ module.exports={
     GetOne: async (req, res) => {
         try{
             const id = req.params.id
-            const Hotel =await HotelSchema.find({_id:id})
+            const Hotel =await HotelSchema.find({_id:id}).populate('Comment')
             return res.status(200).json(Hotel)
         }catch(err){
             console.log(err)

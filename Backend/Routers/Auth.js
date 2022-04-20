@@ -4,7 +4,8 @@ const Auth = require('../Controllers/Auth')
 const MiddleWare = require("../Midlewares")
 
 
-router.post('/',Auth.Login)
+router.post('/Insciption',Auth.Inscription)
+router.post('/Login',Auth.Login)
 router.delete('/',MiddleWare.verifyToken,Auth.Logout)
 
 module.exports = router

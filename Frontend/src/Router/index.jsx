@@ -9,6 +9,9 @@ import DashboardRooms from '../Views/Dashboard/Rooms'
 import DashboardClients from '../Views/Dashboard/Client'
 import DashboardBooking from '../Views/Dashboard/Réservation'
 import DashboardSettings from '../Views/Dashboard/Settings'
+import About from '../Views/Abouts'
+import ContactUs from '../Views/ContactUs'
+
 
 /// LAYOUT
 import PageLayout from '../Container/Page'
@@ -28,11 +31,12 @@ export default function RouterCmpt(){
     <>
           <BrowserRouter>
                   <Routes>
-                    <Route path="/Contact" element={<CountactUsPage/>} />
+                    <Route path="/contact" element={<CountactUsPage/>} />
                     <Route path="/" element={<PageLayout/>} >
                         <Route path="/" element={<Home />} />
                         <Route path="Hotels" element={<HotelsPage />} />
                         <Route path="Hotel/:id" element={<ProfileHotel />} /> 
+                        <Route path="About" element={<About/>} /> 
                     </Route>
                     <Route path="/Dashboard" element={<DashboardLayout/>} >
                         <Route path="Statistique" element={<DashboardStatistique />} />

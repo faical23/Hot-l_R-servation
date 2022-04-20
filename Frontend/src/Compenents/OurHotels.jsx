@@ -1,9 +1,9 @@
 import HotelImg from '../Assets/Img/HotelImg.jpg'
 import {useEffect,useState} from 'react'
-import API_URL from '../Config.js'
 import Star from '../Assets/Img/star.png'
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
+import {useFetch} from "../Helpers"
 
 
 
@@ -49,21 +49,29 @@ const Hotel = (Hotel) =>{
 function ExploreHotels(Store) {
     const [Hotels,SetHotels] = useState([])
     useEffect(async() => {
-                const res = await fetch(`${API_URL}/api/v1/Hotel?limit=${Store.NumberHotels}`);
-                const ParseRes = await res.json();
-                SetHotels(ParseRes)
-                console.log("from explore hotels",Store)
+        if(!Store.CityHotels){
+            const EndPoint = `/api/v1/Hotel?limit=${Store.NumberHotels}`
+            const Data = await useFetch('GET',EndPoint)
+            SetHotels(Data)
+        }
+        else
+            SetHotels(Store.CityHotels)
+
+
     },[Store.NumberHotels,Store.CityHotels]); 
     const OurHotels =  Hotels.map(SingleHotel => {
         return (<Hotel key={SingleHotel._id} SingleHotel={SingleHotel} />)
     })
   return (
-      <>
-        {OurHotels}
-      </>
+        <div className="HotelPage__OurSeelection mt-20">
+            <h1>curious ? browse our selection new</h1>
+            {!Store.CityHotels ? '' : <h2 className="Result">{Hotels[0].City} ({Hotels.length} Hotels)</h2> }
+            <div className="HotelPage__Hotels mt-20">
+            {OurHotels}
+            </div>
+        </div>
   );
 }
-
 const GetState = (state) =>{
     return {
         CityHotels:state?.CityHotels,

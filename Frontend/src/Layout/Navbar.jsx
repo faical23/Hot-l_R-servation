@@ -40,7 +40,7 @@ const Navbar = (Store)=>{
                             </Link>
                         </li>
                         <li>
-                            <Link to="/Contact">
+                            <Link to="/contact">
                                 Contact
                             </Link>
                         </li>

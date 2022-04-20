@@ -17,7 +17,7 @@ function SideBar() {
     <div className="SideBare">
         <h1>Dashboard</h1>
         <ul>
-            <Link to="/Hotel/123">
+            <Link to="/Dashboard/profil">
               <li><img src={HotelIcon} alt="" /> Profile</li>
             </Link>
             <Link to="/Dashboard/Statistique">

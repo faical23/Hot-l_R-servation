@@ -5,7 +5,7 @@ app.use(express.json())
 const cors = require('cors')
 app.use(cors())
 /// IMPORT DB
-const DB = require('./Config')
+require('./Config')
 
 /// IMPORT ROUTER
 const RouterV1 = require('./Routers');

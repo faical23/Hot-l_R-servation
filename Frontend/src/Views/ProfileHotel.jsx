@@ -26,15 +26,33 @@ import Villa from '../Assets/Img/villa.jpg'
 import Appartement from '../Assets/Img/appartement.jpg'
 
 import Réservation from '../Compenents/Réservation'
+import API_URL from '../Config.js'
 
 import { connect } from "react-redux";
+import {useState,useEffect} from 'react'
+import { useParams } from "react-router-dom";
+
 
 const Profile = (Store)=>{
+    const [HotelData,SetHotelData] =useState([])
+    const { id } = useParams()
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await fetch(`${API_URL}/api/v1/Hotel/${id}`)
+            const ParseRes = await res.json();
+            SetHotelData(ParseRes)
+            console.log("hotel data",HotelData)
+        }
+        fetchData()
+        .catch(console.error);
+    },[]); 
+    console.log(HotelData[0]?.Services)
+
     return (
         <div className="Profile">
             {Store.Réserve && <Réservation  Data='99'/>}
             <div  className="Profile__Hero">
-                    <h1>Hotel Sofitel morocco</h1>
+                <h1>{HotelData[0]?.Name}</h1>
             </div>
             <div className="Profile_Information">
                 <div className="Profile_Information__Right">
@@ -42,8 +60,8 @@ const Profile = (Store)=>{
                                 <div className="Localisation">
                                     <h5 className="TitleSection">Localisation</h5>
                                     <div className="Localisation_Map">
-                                        <iframe width="100%" height="600" frameBorder="0" scrolling="no" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(hotels)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/sport-gps/">
-                                            gps watches</a>
+                                        <iframe  style={{width:'100%',height:'300px'}} src={'https://www.google.com/maps?q='+HotelData[0]?.Localisation+'&output=embed'}>
+                                            <a href="https://www.gps.ie/sport-gps/">gps watches</a>
                                         </iframe>
                                     </div>
                                 </div>
@@ -53,62 +71,61 @@ const Profile = (Store)=>{
                                 <div className="Informationbusiness_Items">
                                         <div className="Informationbusiness_item">
                                             <img src={HotelIcon} alt="" />
-                                            <h6>Hotel Sofitel Morocco</h6>
+                                            <h6>{HotelData[0]?.Name}</h6>
                                         </div>
                                         <div className="Informationbusiness_item">
                                             <img src={Email} alt="" />
-                                            <h6>Agadir,morocco</h6>
+                                            <h6>{HotelData[0]?.Email}</h6>
                                         </div>
                                         <div className="Informationbusiness_item">
                                             <img src={Phone} alt="" />
-                                            <h6>Hotel@gmail.com</h6>
+                                            <h6>{HotelData[0]?.Phone}</h6>
                                         </div>
                                         <div className="Informationbusiness_item">
                                             <img src={Localisation} alt="" />
-                                            <h6>+212619887328</h6>
+                                            <h6>{HotelData[0]?.Adress}</h6>
                                         </div>
                                 </div>
                         </div>
                         <div className="Profile_Services">
                                 <h5 className="TitleSection">services</h5>
                                 <div  className="Profile_Services_items">
-                                    <div className="Profile_Services_items_item">
+                                    {HotelData[0]?.Services?.includes('Wifi') && <div className="Profile_Services_items_item">
                                         <img src={Wifi} alt="" />
                                         <h6>Wifi</h6>
-                                    </div>
-                                    <div className="Profile_Services_items_item">
+                                    </div>}
+                                    {HotelData[0]?.Services?.includes("Piscine") && <div className="Profile_Services_items_item">
                                         <img src={Piscine} alt="" />
                                         <h6>Piscine</h6>
-                                    </div>
-                                    <div className="Profile_Services_items_item">
+                                    </div>}
+                                    {HotelData[0]?.Services?.includes('Boite') &&<div className="Profile_Services_items_item">
                                         <img src={Boite} alt="" />
                                         <h6>Boite</h6>
-                                    </div>
-                                    <div className="Profile_Services_items_item">
+                                    </div>}
+                                    {HotelData[0]?.Services?.includes("Transport") &&<div className="Profile_Services_items_item">
                                         <img src={Transport} alt="" />
                                         <h6>Transport</h6>
-                                    </div>
-                                    <div className="Profile_Services_items_item">
+                                    </div>}
+                                    {HotelData[0]?.Services?.includes("Restarant") &&<div className="Profile_Services_items_item">
                                         <img src={Restaurant} alt="" />
                                         <h6>Restaurant</h6>
-                                    </div>
-                                    <div className="Profile_Services_items_item">
+                                    </div>}
+                                    {HotelData[0]?.Services?.includes('Café') &&<div className="Profile_Services_items_item">
                                         <img src={Cafee} alt="" />
                                         <h6>Café</h6>
-                                    </div>
-                                    <div className="Profile_Services_items_item">
+                                    </div>}
+                                    {HotelData[0]?.Services?.includes('Salle fitness') &&<div className="Profile_Services_items_item">
                                         <img src={Fitness} alt="" />
                                         <h6>Salle fitness</h6>
-                                    </div>
+                                    </div>}
                                 </div>
                         </div>
                         <div className="Profile_SocialMedia">
                                 <h5 className="TitleSection">Social media</h5>
                                 <div className="Profile_SocialMedia__Icons">
-                                    <img src={Facebook} alt="" />
-                                    <img src={Instagram} alt="" />
-                                    <img src={Twitter} alt="" />
-                                    <img src={Browser} alt="" />
+                                    {HotelData[0]?.FacbookPage && <img src={Facebook} alt="" />}
+                                    {HotelData[0]?.Instagram && <img src={Instagram} alt="" />}
+                                    {HotelData[0]?.Website && <img src={Browser} alt="" />}
                                 </div>
                         </div>
                         <div className="Profile_Revwies">
