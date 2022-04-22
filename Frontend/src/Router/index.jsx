@@ -10,7 +10,9 @@ import DashboardClients from '../Views/Dashboard/Client'
 import DashboardBooking from '../Views/Dashboard/Réservation'
 import DashboardSettings from '../Views/Dashboard/Settings'
 import About from '../Views/Abouts'
-import ContactUs from '../Views/ContactUs'
+import Profit from '../Views/Dashboard/Profit'
+import Profil from '../Views/Dashboard/Profil'
+
 
 
 /// LAYOUT
@@ -44,6 +46,9 @@ export default function RouterCmpt(){
                         <Route path="Clients" element={<DashboardClients />} />
                         <Route path="Reservations" element={<DashboardBooking />} />
                         <Route path="Settings" element={<DashboardSettings />} />
+                        <Route path="profit" element={<Profit/>} /> 
+                        <Route path="profil" element={<Profil/>} /> 
+
                     </Route>
                     <Route path="*" element={<NotFoundPage />} />
                   </Routes>

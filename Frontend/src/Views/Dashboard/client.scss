@@ -1,0 +1,126 @@
+
+.error{
+  color:red !important;
+  text-align: center;
+}
+
+.statistique__Allclients__clientTable{
+    box-shadow: 0px 0px 11px -7px rgb(0, 0, 0 / 41%) !important;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    height: 500px;
+    overflow-y: scroll;
+    .statistique__Allclients__th,.statistique__Allclients__td{
+      padding: 10px 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      margin: 8px 0px;
+      border-radius: 5px;
+      p{
+        width: 25%;
+        margin: 0px;
+      }
+    }
+    .statistique__Allclients__td{
+      box-shadow: 0px 0px 3px -3px rgb(0, 0, 0 / 41%) !important;
+      background: #f5f5f5;
+    }
+  }
+  .statistique__Allclients__search{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0px 0px 11px -4px rgba(0, 0, 0, 0.41);
+    margin: 30px 0px;
+    
+    input{
+      border: none;
+      box-shadow: none;
+      background: none;
+      width: 90%; 
+      padding: 10px 20px;   
+      outline: none;
+    }
+  }
+  .actions,.Isreserved{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg{
+      margin: 0px 10px;
+      fill: black;
+      cursor: pointer;
+      &:hover{
+        fill: #2f2fb7;
+      }
+    }
+  }
+  .Ispayee,.Notpayee,.Isreserved,.Notreserved{
+    background: rgb(31, 183, 31);
+    border-radius: 4px;
+    padding:5px 10px; 
+    font-size: 11px;
+    color:white;
+    width: 15% !important;
+    margin: 0px auto;
+    cursor: pointer;
+    &:hover{
+      border: 1px solid rgb(31, 183, 31);
+      background:transparent;
+      color:black;
+    }
+  }
+
+  .Notpayee,.Notreserved{
+    background: rgb(190, 25, 39);
+    &:hover{
+      border: 1px solid rgb(190, 25, 39);
+      background:transparent;
+      color:black;
+    }
+  }
+  .IspayeeHead,.Notreserved{
+    width: 15% !important;
+  }
+  .DashboardMoney__card{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+  .DashboardMoney__card__single{
+      box-shadow: 0px 0px 6px -3px rgba(0, 0, 0, 0.41);
+      background: white;
+      border-radius: 10px;
+      text-align: center;
+      width: 20%;
+      padding: 15px 0px;
+      svg{
+          width: 40px;
+          height: 40px;
+          fill: black;
+          margin: auto;
+      }
+      span{
+          display: block;
+      }
+      .card__money{
+          margin: 15px 0px;
+          font-size: 30px;
+      }
+      @media only screen and (max-width: 768px){
+        width: 30% ;
+      }
+      @media only screen and (max-width: 560px){
+          width: 60%;
+          margin: 20px auto;
+      }
+    }
+    @media only screen and (max-width: 560px){
+      display: block;
+    }
+
+}

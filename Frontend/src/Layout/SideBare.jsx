@@ -17,6 +17,9 @@ function SideBar() {
     <div className="SideBare">
         <h1>Dashboard</h1>
         <ul>
+          <Link to="/">
+              <li><img src={HotelIcon} alt="" /> Home</li>
+            </Link>
             <Link to="/Dashboard/profil">
               <li><img src={HotelIcon} alt="" /> Profile</li>
             </Link>
@@ -27,6 +30,9 @@ function SideBar() {
             </Link>
             <Link to="/Dashboard/Rooms">
                 <li><img src={RoomsIcons} alt="" />Rooms</li>
+            </Link>
+            <Link to="/Dashboard/profit">
+                <li><img src={customer} alt="" />profit</li>
             </Link>
             <Link to="/Dashboard/Clients">
                 <li><img src={customer} alt="" />Clients</li>

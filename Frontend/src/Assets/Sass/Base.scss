@@ -49,4 +49,22 @@ body{
 .Dashborad{
     display:flex;
     align-items:start;
+    ::-webkit-scrollbar {
+        width: 10px;
+        position: relative;
+        top: 20px;
+        border-radius: 30px;
+    }
+    /* Track */
+    
+     ::-webkit-scrollbar-track {
+        background-color: rgb(157, 157, 157);
+    }
+    /* Handle */
+    
+     ::-webkit-scrollbar-thumb {
+        background: black;
+    }
+    /* Handle on hover */
+    
 }
