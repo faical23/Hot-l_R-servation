@@ -37,7 +37,9 @@ select,textarea{
   width: 100%;
   border-radius: 10px;
   padding: 8px;
-  margin: 10px 0px
+  margin: 10px 0px;
+  border: 1px solid grey;
+  outline: none;
 }
 .TitlePopup{
   text-align:start !important;

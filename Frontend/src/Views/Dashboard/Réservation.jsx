@@ -1,10 +1,20 @@
 
 import '../../Assets/Sass/Base.scss'
 import './client.scss'
+import RéservationPopup from '../../Compenents/RéservationDétailPopup'
+import  {useState} from 'react'
 
 
 function DashboradStatistique() {
+
+  const [OpenPopup, SetOpenPopup] = useState(false)
+  const ClosePopup = () =>{
+    SetOpenPopup(false)
+  }
   return (
+    <>
+      { OpenPopup && <RéservationPopup close={ClosePopup} />}
+      
       <div  className="Dashboard__Centent__Tables">
         <div class="statistique__Allclients__search">
           <input type="text" placeholder="Search" />
@@ -36,6 +46,7 @@ function DashboradStatistique() {
             <p className="Ispayee">Payée</p>
             <p className="actions">
                   <svg
+                    onClick={()=>{SetOpenPopup(true)}}
                       xmlns="http://www.w3.org/2000/svg"
                       height="24px"
                       viewBox="0 0 24 24"
@@ -96,6 +107,7 @@ function DashboradStatistique() {
           <p class="error">Not found</p>
         </div>
       </div>
+    </>
   );
 }
 

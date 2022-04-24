@@ -72,15 +72,15 @@ function DashboradStatistique() {
         </div>
         </div>
         <div className="Second_Informations">
-          <span>Services</span>
-          <Select 
+          {/* <span>Services</span> */}
+          {/* <Select 
               isMulti
               name="Services"
               options={options}
               className="basic-multi-select"
               classNamePrefix="select"
               onChange={e =>{HandleChangeSelect(e)}}
-           />
+           /> */}
           <span>Description</span>
           <TextArea rows={4} placeholder="Description" maxLength={6} />
           <span>Localisation</span>

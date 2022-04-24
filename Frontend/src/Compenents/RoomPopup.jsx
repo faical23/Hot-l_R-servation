@@ -3,21 +3,25 @@ import './Inscription.scss'
 import '../Views/Dashboard/client.scss'
 
 import Remove from '../Assets/Img/remove.png'
-import Select from 'react-select'
 import { Input } from 'antd';
 const { TextArea } = Input;
+import { Select } from 'antd';
+import React, { useState } from "react";
+import { FileUploader } from "react-drag-drop-files";
 
-function Rooms(props) {
-    const options = [
-        { value: 'Simple room', label: 'Simple room' },
-        { value: 'Multi bed', label: 'Multi bed' },
-        { value: 'Villa', label: 'Villa' },
-        { value: 'Appartement', label: 'Appartement' }
-      ]
+const fileTypes = ["JPG", "PNG", "GIF"];
+const { Option } = Select;
+
+function RoomPopup(props) {
+    console.log("props",props)
+    const [file, setFile] = useState(null);
+    const handleChange = (file) => {
+      setFile(file);
+    };
   return (
     <div className="ConnexionZone">
         <div className="Inscription">
-                    <img className="Remove" src={Remove} alt="" onClick={()=>Store.ClosePopup()}  />
+                    <img className="Remove" src={Remove} alt="" onClick={()=>{props.close()}}  />
                     <div >
                         <div className="Inscription__Faild">
                             <input type="text" placeholder="Number" />
@@ -33,11 +37,18 @@ function Rooms(props) {
                         </div>
                         <TextArea rows={4} placeholder="Description" maxLength={6} />
                         <span style={{'textAlign':'start !important'}}>Room Type</span>
-                        <Select options={options} />
-                        <span style={{'textAlign':'start !important'}}>Images</span>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
 
+                        <span style={{'textAlign':'start !important'}}>Images</span>
+                        <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
                         <div className="Btn btn__rooms">
-                            <button className="UpdatePorile">New room</button>
+                            {props.type == "new" && <button className="UpdatePorile">New room</button>}
+                            {props.type == "update" && <button className="UpdatePorile">Update room</button>}                            
                         </div>
                     </div>
         </div>
@@ -45,4 +56,6 @@ function Rooms(props) {
   );
 }
 
-export default (Rooms);
+export default (RoomPopup);
+
+

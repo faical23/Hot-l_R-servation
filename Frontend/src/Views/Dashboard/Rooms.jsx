@@ -1,12 +1,20 @@
 import '../../Assets/Sass/Base.scss'
 import './client.scss'
-import Room from '../../Compenents/Rooms'
+import RoomPopup from '../../Compenents/RoomPopup'
+import {useState,useEffect,useRef} from 'react'
 
 
 function DashboradStatistique() {
+  const [OpenPopup,SetOpenPopup] =useState(false)
+  const [TypePopup,SetTypePopup] =useState('')
+
+  const ClosePopup = () =>{
+    SetOpenPopup(false)
+  }
+
   return (
     <>
-      <Room/>
+      {OpenPopup && <RoomPopup type={TypePopup} close={ClosePopup}  />}
       <div className="Dashboard__Centent__Tables">
         <div class="DashboardMoney__card">
               <div class="DashboardMoney__card__single">
@@ -32,7 +40,7 @@ function DashboradStatistique() {
               </div>
         </div>
         <div className="Btn btn__rooms">
-          <button className="UpdatePorile">New room</button>
+          <button className="UpdatePorile" onClick={()=>{SetOpenPopup(true);SetTypePopup('new')}}>New room</button>
         </div>
         <div class="statistique__Allclients__search">
               <input type="text" placeholder="Search" />
@@ -68,6 +76,7 @@ function DashboradStatistique() {
                 <p className="Isreserved">Réserved</p>
                 <p className="actions">
                       <svg
+                        onClick={()=>{SetOpenPopup(true);SetTypePopup('show')}}
                           xmlns="http://www.w3.org/2000/svg"
                           height="24px"
                           viewBox="0 0 24 24"
@@ -80,6 +89,7 @@ function DashboradStatistique() {
                           />
                       </svg>
                       <svg
+                        onClick={()=>{SetOpenPopup(true);SetTypePopup('update')}}
                   xmlns="http://www.w3.org/2000/svg"
                   enable-background="new 0 0 24 24"
                   height="24px"
