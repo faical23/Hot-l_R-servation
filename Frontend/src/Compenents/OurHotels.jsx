@@ -47,39 +47,51 @@ const Hotel = (Hotel) =>{
 
 
 function ExploreHotels(Store) {
-    const [Hotels,SetHotels] = useState([])
+    const [Hotels,SetHotels] =useState(Store.HotelsStore)
     useEffect(async() => {
-        if(!Store.CityHotels){
-            const EndPoint = `/api/v1/Hotel?limit=${Store.NumberHotels}`
-            const Data = await useFetch('GET',EndPoint)
-            SetHotels(Data)
+            const Data = await useFetch('GET',`/api/v1/Hotel`)
+            Store.SetHotelsData(Data)
+    },[]); 
+
+    useEffect(async() => {
+        if(Store.SearchByCity !== ""){
+            Store.GetByType('')
+            const FilterByName = Store.HotelsStore.filter(Item => Item.City == Store.SearchByCity)
+            SetHotels(FilterByName)
         }
-        else
-            SetHotels(Store.CityHotels)
+    },[Store.SearchByCity])
 
+    useEffect(async() => {
+        if(Store.SearchByType !== ""){
+            Store.GetByCity('')
+            const FilterByType = Store.HotelsStore.filter(Item => Item.TypeHotel == Store.SearchByType)
+            SetHotels(FilterByType)
+        }
+    },[Store.SearchByType])
 
-    },[Store.NumberHotels,Store.CityHotels]); 
-    const OurHotels =  Hotels.map(SingleHotel => {
+    const OurHotels =  Hotels.slice(0,Store.NumberHotels).map(SingleHotel => {
         return (<Hotel key={SingleHotel._id} SingleHotel={SingleHotel} />)
     })
   return (
         <div className="HotelPage__OurSeelection mt-20">
             <h1>curious ? browse our selection new</h1>
-            {!Store.CityHotels ? '' : <h2 className="Result">{Hotels[0].City} ({Hotels.length} Hotels)</h2> }
+
+            {Store.SearchByCity && <h1>{Store.SearchByCity}({Hotels.length})</h1>}
+            {Store.SearchByType && <h1>{Store.SearchByType}({Hotels.length})</h1>}
             <div className="HotelPage__Hotels mt-20">
-            {OurHotels}
+                {OurHotels}
             </div>
         </div>
   );
 }
 const GetState = (state) =>{
     return {
-        CityHotels:state?.CityHotels,
+        HotelsStore:state?.Hotels?.hotels,
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-      GetHotelsData: () => dispatch({ type: 'GET_HOTELS_BY_CITY'}),
+      SetHotelsData: (data) => dispatch({ type: 'SET_HOTELS',payload:data}),
     }
   }
 export default  connect(GetState,mapDispatchToProps)(ExploreHotels);

@@ -11,21 +11,28 @@ import HotelTypes from "../Compenents/HotlesType"
 function Home() {
 
     const [NumberHotel,SetNumberHotel] = useState(10)
+    const [SearchByCity,SetSearchByCity] = useState('')
+    const [SearchByType,SetSearchByType] = useState('')
+
+    const GetByCity = (City) =>{SetSearchByCity(City)}
+    const GetByType = (Type) =>{SetSearchByType(Type)}
+
+
     
 
   return (
     <>
         <div className="HotelPage">
                 <div className="HotelPage__hero">
-                    <SearchHotel/>
+                    <SearchHotel GetByCity={GetByCity}/>
                 </div>
                 <div className="HotelPage__BestLodging  mt-20">
                     <h1>find the best lodging</h1>
                     <div className="HotelPage__Item">
-                        <HotelTypes/>
+                        <HotelTypes GetByType={GetByType}/>
                     </div>
                 </div>
-                <OurHotels NumberHotels={NumberHotel} />
+                <OurHotels NumberHotels={NumberHotel}  GetByCity={GetByCity} GetByType={GetByType} SearchByType={SearchByType}   SearchByCity={SearchByCity}/>
                 <div className="BtnZone">
                     <button className="SeeMore" onClick={()=>{SetNumberHotel(prevState =>{return prevState+10})}}>See More</button>
                 </div>

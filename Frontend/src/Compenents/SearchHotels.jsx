@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom";
 const ResultSearchCity = (Props) =>{
     const CityName = useRef()
     const GetThisCityHotels = async() =>{
-        const EndPoint = `/api/v1/Hotel?city=${CityName.current.innerHTML}`
-        const Data = await useFetch('GET',EndPoint)
-        Props.Store.GetHotelsData(Data)
+        Props.Store.GetByCity(CityName.current.innerHTML)
         Props.HideResult()
     }
     return (
@@ -18,6 +16,7 @@ const ResultSearchCity = (Props) =>{
 }
 
 const ResultSearchHotel = (Hotel) =>{
+
     let navigate = useNavigate()
     const SwitchToHotelsProfil= () =>{
         navigate(`/Hotel/${Hotel.Data._id}`)
@@ -37,6 +36,7 @@ function SearchHotels(Store) {
     useEffect(async() => {
         const res = await fetch(`${API_URL}/api/v1/Hotel?limit=10&city=${InputSearchCity}`);
         const ParseRes = await res.json();
+        console.log("res",res)
         SetResultCitysSearch(ParseRes)
 
     },[InputSearchCity]);
@@ -103,7 +103,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 const GetState = (state) =>{
     return {
-        CityHotels:state?.CityHotels,
+        HotelsStore:state?.Hotels?.hotels,
     }
 }
 export default connect(GetState,mapDispatchToProps)(SearchHotels);

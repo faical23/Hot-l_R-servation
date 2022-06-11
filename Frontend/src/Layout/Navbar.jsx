@@ -3,8 +3,17 @@ import { Link } from 'react-router-dom';
 import Inscription from '../Compenents/Inscription'
 import Login from '../Compenents/Login'
 import { connect } from "react-redux";
+import {useEffect,useState} from 'react'
 
 const Navbar = (Store)=>{
+    const [user,Setuser] = useState()
+
+    useEffect(() => {
+        if(Store?.User?.data){
+            Setuser(Store?.User?.data)
+        }
+    },[Store.User])
+    
     return (
         <div className="navbar">
             {Store.Inscription && <Inscription />}
@@ -35,17 +44,19 @@ const Navbar = (Store)=>{
                             </Link>
                         </li>
                         <li>
-                            <Link to="/Dashboard/Statistique">
-                                Dashboard
-                            </Link>
-                        </li>
-                        <li>
                             <Link to="/contact">
                                 Contact
                             </Link>
                         </li>
-                        <li className="Connexion"  onClick={()=>Store.ToggleConnexion()} >Connexion</li>
-                        <li>{Store.Name}</li>
+                        {!user && <li className="Connexion"  onClick={()=>Store.ToggleConnexion()} >Connexion</li>} 
+                        {user && 
+                            <li className="Connexion">
+                                <Link to="/Dashboard/profil">
+                                    Dashboard
+                                </Link>
+                            </li> 
+                        }
+
                     </ul>
             </div>
         </div>
@@ -56,8 +67,9 @@ const Navbar = (Store)=>{
 
 const GetState = (state) =>{
     return {
-        Inscription:state?.Inscription,
-        Login:state?.Login,
+        Inscription:state?.TogglePopup?.Inscription,
+        Login:state?.TogglePopup?.Login,
+        User:state?.UserData
     }
 }
 const mapDispatchToProps = (dispatch) => {

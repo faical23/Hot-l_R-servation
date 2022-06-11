@@ -3,7 +3,7 @@ import './client.scss'
 import Select from 'react-select'
 import { Input } from 'antd';
 const { TextArea } = Input;
-import camera from '../../Assets/Img/camera.png'
+// import camera from '../../Assets/Img/camera.png'
 
 
 
@@ -99,7 +99,7 @@ function DashboradStatistique() {
         <div className="Third-Informations_img">
             <span>Cover image</span>
             <div className="CoverImg">
-                <img src={camera} alt="" />
+                {/* <img src={camera} alt="" /> */}
             </div>
         </div>
         <div className="Btn">
