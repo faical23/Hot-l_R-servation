@@ -14,19 +14,17 @@ module.exports={
     Add: async (req, res) => {
         const Comment = {
             Comment:req.body.Comment,
-            Rate:req.body.Rate
+            Name:req.body.Name,
+            Hotel:req.body._id
         }
+        console.log("Comment",Comment)
         try{
             new CommenteSchema(Comment)
             .save()
             .then(async (CommentHotel)=>{
-                const GetHotel = await HotelSchema.findById(req.body.Hotel)
-                    await HotelSchema.findByIdAndUpdate(
-                    req.body.Hotel,
-                    { Comment: [...GetHotel.Comment,CommentHotel._id]}
-                ).then(Hotel =>{
-                    return res.status(200).send(Hotel)
-                })
+                console.log(CommentHotel)
+                return res.status(200).send()
+
             })
             .catch(err =>{
                 return res.status(400).send(err)

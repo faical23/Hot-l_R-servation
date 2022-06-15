@@ -4,11 +4,11 @@ const Room = mongoose.Schema({
     State:{type:Boolean},
     Block:{type:String},
     Price:{type:String},
-    Déscription:{type:String},
-    Type:{type:mongoose.Schema.Types.ObjectId,ref:'RoomType'},
+    Description:{type:String},
+    Type:{type:String},
     Hotel:{type:mongoose.Schema.Types.ObjectId,ref:'Hotel'},
-    Image:[{type:Array}],
-    Bed:[{type:Number}]
+    Image:{type:String},
+    Bed:{type:Number}
 },{timestamps:true})
 mongoose.model('Room',Room);
 

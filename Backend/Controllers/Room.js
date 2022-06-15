@@ -29,18 +29,20 @@ module.exports={
         }
     },
     Add: async (req, res) => {
-        const Room = {
-            "Number":req.body.Number,
-            "State":false,
-            "Block":req.body.Block,
-            "Price":req.body.Price,
-            "Déscription":req.body.Déscription,
-            "Type":req.body.Type,
-            "Hotel":req.body.Hotel,
-            "Image":req.body.Image,
-            "Bed":req.body.Bed,
-        }
+
         try{
+            const Room = {
+                "Number":req.body.Number,
+                "State":false,
+                "Block":req.body.Block,
+                "Price":req.body.Price,
+                "Description":req.body.Description,
+                "Type":req.body.Type,
+                "Hotel":req.body.Hotel,
+                "Image":req.file.filename,
+                "Bed":req.body.Bed,
+            }
+            console.log("rooms",Room)
             new RoomSchema(Room)
                 .save()
                 .then((Room)=>{
@@ -65,16 +67,18 @@ module.exports={
                 State:false,
                 Block:req.body.Block,
                 Price:req.body.Price,
-                Déscription:req.body.Déscription,
+                Déscription:req.body.Description,
                 Type:req.body.Type,
                 Hotel:req.body.Hotel,
-                Image:req.body.Image,
+                Image:req.file == "undefined" ? req?.file?.filename : req.body.Image,
                 Bed:req.body.Bed,
               },
             };
             const Room = await RoomSchema.findByIdAndUpdate(id, updateDoc);
+            console.log('room',Room)
             return res.status(200).json({Message:"Update successfuly"})
         }catch(err){
+            console.log("err",err)
             res.status(400).json(err)
         }
     },

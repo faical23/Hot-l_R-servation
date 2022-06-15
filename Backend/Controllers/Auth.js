@@ -3,15 +3,28 @@ const Helper = require('../Helpers')
 const bcrypt = require('bcrypt');
 
 module.exports={
+    CheckEmail:async (req, res) => {
+        const {email} = req.body
+        try{
+            const hotel = await HotelSchema.findOne({ Email: email}, {})
+            console.log("hotel",hotel)
+            if(hotel) res.status(200).json();
+            else  res.status(404).json()
+        }
+        catch(err){
+            return res.status(400).json()
+        }
+    },
     Inscription: async (req, res) => {
-        const {Email,Name,Password,City,Phone} = req.body
-        const HashPassword = await Helper.HashPassword(Password)
+        const {email,name,password,city,phone} = req.body
+
+        const HashPassword = await Helper.HashPassword(password)
         const Hotel = {
-            Name:Name,
-            City:City,
-            Email:Email,
+            Name:name,
+            City:city,
+            Email:email,
             Adress:"",
-            Phone:Phone,
+            Phone:phone,
             Password:HashPassword,
             CoverImg:'',
             Image:[],
@@ -26,16 +39,15 @@ module.exports={
             Comment:[],
             StartPrice:""
         }
-        console.log("im her ")
         try{
             new HotelSchema(Hotel)
                 .save()
                 .then(async (DataHotel)=>{
                     const token = await Helper.CreateJwt(DataHotel._id,86400)
-                    console.log(token)
-                    return res.status(201).send("success")
+                    return res.status(201).json({Hotel:Hotel,token:token})
                 })
                 .catch(err =>{
+                    console.log(err)
                     return res.status(400).send(err)
                 })
         }catch(err){
@@ -43,12 +55,12 @@ module.exports={
         }
     },
     Login: async (req, res) => {
-        const Hotel = await HotelSchema.findOne({ Email: req.body.Email}).exec();
+        const Hotel = await HotelSchema.findOne({ Email: req.body.email}).exec();
         Hotel === null  && res.status(403).send({Message:'Email Not Found'})
-        bcrypt.compare(req.body.Password, Hotel.Password).then(async (validPass) => {
-            !validPass &&  res.status(200).send({Message : 'Password Incorrect'})
+        bcrypt.compare(req.body.password, Hotel.Password).then(async (validPass) => {
+            !validPass &&  res.status(403).send({Message : 'Password Incorrect'})
             const token = await Helper.CreateJwt(Hotel._id,86400)
-            return res.status(201).send({token})
+            return res.status(200).json({Hotel:Hotel,token:token})
         }).catch(err => res.status(400).send({Message : err}));
     },
     Logout: async (req, res) => {

@@ -40,9 +40,6 @@ function SideBar() {
             <Link to="/Dashboard/Reservations">
                 <li><img src={Booking} alt="" />Réservations</li>
             </Link>
-            <Link to="/Dashboard/Settings">
-                <li><img src={Setting} alt="" />Settings</li>
-            </Link>
         </ul>
         <li><img src={Logout} alt="" />Logout</li>
     </div>

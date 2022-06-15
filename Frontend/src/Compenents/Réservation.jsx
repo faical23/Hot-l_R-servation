@@ -7,11 +7,13 @@ import Phone from '../Assets/Img/phone-call.png'
 import User from '../Assets/Img/user.png'
 import Email from '../Assets/Img/email.png'
 
-function Login(Store) {
+function Login(Props) {
+    console.log("props",Props)
+
   return (
     <div className="ConnexionZone">   
         <div className="Inscription">
-                    <img className="Remove" src={Remove} alt="" onClick={()=>Store.ClosePopup()}  />
+                    <img className="Remove" src={Remove} alt="" onClick={()=>Props.ClosePopup()}  />
                     <div >
                         <div className="Inscription__Faild">
                               <img src={User}/>
@@ -45,12 +47,10 @@ function Login(Store) {
 }
 const GetState = (state) =>{
     return {
-        Réserve:state?.Réserve,
     }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    ClosePopup: () => dispatch({ type: 'CLOSE_POPUP'}),
   }
 }
 

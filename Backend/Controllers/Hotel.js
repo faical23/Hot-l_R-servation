@@ -10,19 +10,7 @@ module.exports={
     },
     Get: async (req, res) => {
         try{
-            let  Hotels = []
-            if(req.query.limit && req.query.city)
-                Hotels = await HotelSchema.find({City:{$regex: ".*"+req.query.city+".*"}}).populate('Comment').limit(req.query.limit)
-            else if(req.query.limit && req.query.Name) 
-                Hotels = await HotelSchema.find({Name:{$regex: ".*"+req.query.Name+".*"}}).populate('Comment').limit(req.query.limit)
-            else if(req.query.limit)
-                Hotels = await HotelSchema.find().populate('Comment').limit(req.query.limit)
-            else if(req.query.city)
-                Hotels = await HotelSchema.find({City:req.query.city}).populate('Comment')
-            else if(req.query.TypeHotel){
-                console.log(req.query.Type)
-                Hotels = await HotelSchema.find({"TypeHotel":{ $search: req.query.Type }}).populate('Comment')
-            }
+            let  Hotels = await HotelSchema.find()
             return res.status(200).json(Hotels)
         }catch(err){
             return res.status(400).json(err)
@@ -75,17 +63,51 @@ module.exports={
     },
     Update: async (req, res) => {
         try{
-            const id = req.params.id ;
+            const {_id} = req.body;
+            const options = { upsert: true };
             const updateDoc = {
               $set: {
                 Name:req.body.Name,
+                City:req.body.City,
+                Email:req.body.Email,
+                Adress:req.body.Adress,
+                Phone:req.body.Phone,
+                CoverImg:'',
+                Image:[],
+                Website:req.body.Website,
+                Description:req.body.Description,
+                FacbookPage:req.body.FacbookPage,
+                Instagram:req.body.Instagram,
+                Localisation:req.body.Localisation,
+                Hashtag:req.body.Hashtag,
+                Service:req.body.Service,
+                Vérified:false, 
+                Comment:[],
+                StartPrice:req.body.StartPrice
               },
             };
-            await HotelSchema.findByIdAndUpdate(id, updateDoc);
-            return res.status(200).json("Succesfly updating")
-        }catch(err){
-            res.status(400).json(err)
-        }
+            console.log("req.body",req.body)
+                const result = await HotelSchema.findByIdAndUpdate(_id, updateDoc, options);
+                console.log("result",result)
+                return res.status(200).json(result)
+            }catch(err){
+                console.log(err)
+            }
+    },
+    UpdateImg :async (req, res) =>{
+        try{
+            const {_id} = req.body;
+            const options = { upsert: true };
+            const updateDoc = {
+              $set: {
+                CoverImg:req.file.filename,
+              },
+            };
+                const result = await HotelSchema.findByIdAndUpdate(_id, updateDoc, options);
+                return res.status(200).json(result)
+            }catch(err){
+                console.log(err)
+            }
     },
     Delete: async (req, res) => {
         try{

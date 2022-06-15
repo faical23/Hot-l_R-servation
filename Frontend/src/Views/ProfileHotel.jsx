@@ -31,28 +31,32 @@ import API_URL from '../Config.js'
 import { connect } from "react-redux";
 import {useState,useEffect} from 'react'
 import { useParams } from "react-router-dom";
+import {Comment,HotelRoompath} from '../AppCall'
+import axios from 'axios'
+import {SwalAlert} from '../Helpers/Alert'
+
 
 
 const HotelOffer = (Props) =>{
         return(
             <div className="Offer__Type">
-            <img src={HotelRooms} alt="" />
-            <div className="Offer__Type__Content">
-                    <h4>Room One bed</h4>
-                    <div className="HowManyBed">
-                        <h5>1</h5>
-                        <span>X</span>
-                        <img src={RoomBed} alt="" />
-                    </div>
-                    <p>
-                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
-                    </p>
-                    <div className="PriceAndReserve">
-                            <h1>130$<span>/Night</span></h1>
-                            <button onClick={() =>Store.OpenRéserve()}>Book now</button>
-                    </div>
+                <img src={HotelRooms} alt="" />
+                <div className="Offer__Type__Content">
+                        <h4>Room One bed</h4>
+                        <div className="HowManyBed">
+                            <h5>1</h5>
+                            <span>X</span>
+                            <img src={RoomBed} alt="" />
+                        </div>
+                        <p>
+                            Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
+                        </p>
+                        <div className="PriceAndReserve">
+                                <h1>130$<span>/Night</span></h1>
+                                <button onClick={() =>Store.OpenRéserve()}>Book now</button>
+                        </div>
+                </div>
             </div>
-        </div>
         )
 }
 
@@ -76,25 +80,89 @@ const Profile = (Store)=>{
         updatedAt:'2022-01-30T14:27:45.933+00:00',
         StartPrice:"16",
         TypeHotel:"Villa",
-        Services:['Wifi','Piscine','Boite','Transport','Café','Restarant',"Salle fitness"],
+        Service:['Wifi','Piscine','Boite','Transport','Café','Restarant',"Salle fitness"],
     }
     const [HotelData,SetHotelData] =useState(Data)
+    const [getcomment,SetgetComment] =useState([])
+    const [getRooms,SetgetRooms] = useState([])
+    const [OpenRéserve,SetOpenRéserve] =useState(false)
+    const [RoomSeelect,SetRoomSeelect] =useState('')
     const { id } = useParams()
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const res = await fetch(`${API_URL}/api/v1/Hotel/${id}`)
-    //         const ParseRes = await res.json();
-    //         SetHotelData(ParseRes)
-    //         console.log("hotel data",HotelData)
-    //     }
-    //     fetchData()
-    //     .catch(console.error);
-    // },[]); 
+    useEffect(() => {
+        axios.get(`${API_URL}/api/v1/Hotel/${id}`)
+        .then(res =>{
+            console.log("res",res.data[0])
+            SetHotelData(res.data[0])
+        })
+        .catch(err =>{
+            console.log("err",err)
+        })
+    },[]); 
 
+    const pathurl = (window.location.pathname).split('/')
+    const [comment,SetComment] = useState({
+        Name:"",
+        Comment:'',
+        _id:pathurl[2]
+    })
+
+    const ChangeState = (key,e) =>{
+        const newstate = {...comment}
+        newstate[key]=e.target.value
+        SetComment(newstate)
+    }
+
+    const AddComment = () =>{
+        if(comment.Name !== "" && comment.Comment !== ""){
+            axios.post(`${process.env.REACT_APP_API_URL+Comment}`,comment)
+            .then((res)=>{
+                res.status === 200 && SwalAlert("Success add comment.",'success')
+                getCommentHotel()
+            })
+            .catch(err=>{
+                SwalAlert("Please Try again",'error')
+            })
+          }
+        console.log("ee",comment)
+    }
+
+    const getCommentHotel = () =>{
+        axios.get(`${process.env.REACT_APP_API_URL+Comment}/${id}`)
+        .then(res =>{
+            SetgetComment(res.data)
+        })
+        .catch(err =>{
+            console.log("err",err)
+        })
+    }
+    const getRoomsHotels = () =>{
+        axios.get(`${process.env.REACT_APP_API_URL+HotelRoompath}/${id}`)
+        .then(res =>{
+            const app = res.data.filter(item => item.Type=='Appartement')
+            const room = res.data.filter(item => (item.Type=='Room multiple bed' || item.Type=='Room Two bed' || item.Type=='Room One bed'))
+            const Villa = res.data.filter(item => item.Type=='Villa')
+            const Boarding = res.data.filter(item => item.Type=='Boarding house')
+            const AllRooms = [app[0],room[0],Villa[0],Boarding[0]]
+            SetgetRooms(AllRooms)
+        })
+        .catch(err =>{
+            console.log("err",err)
+        })
+    }
+    useEffect(()=>{
+        getCommentHotel()
+        getRoomsHotels()
+    },[HotelData])
+
+    const ClosePopup = () =>{
+        SetOpenRéserve(false)
+    }
+
+    
     return (
         <div className="Profile">
-            {Store.Réserve && <Réservation  Data='99'/>}
-            <div  className="Profile__Hero">
+            {OpenRéserve && <Réservation  room={RoomSeelect} ClosePopup={ClosePopup}/>}
+            <div  className="Profile__Hero" style={{backgroundImage:`url(${process.env.REACT_APP_API_PUBLIC}/${HotelData?.CoverImg})`}}>
                 <h1>{HotelData?.Name}</h1>
             </div>
             <div className="Profile_Information">
@@ -133,10 +201,71 @@ const Profile = (Store)=>{
                         <div className="Profile_Services">
                                 <h5 className="TitleSection">services</h5>
                                 <div  className="Profile_Services_items">
-                                    {HotelData?.Services?.includes('Wifi') && <div className="Profile_Services_items_item">
+                                    {
+                                        HotelData?.Service.map(Item =>{
+                                            return(
+                                                <>
+                                                    {
+                                                        Item.value == 'wifi' &&
+                                                        <div className="Profile_Services_items_item">
+                                                            <img src={Wifi} alt="" />
+                                                            <h6>Wifi</h6>
+                                                        </div>
+                                                    }
+                                                    {
+                                                        Item.value == 'Boite' &&
+                                                        <div className="Profile_Services_items_item">
+                                                            <img src={Boite} alt="" />
+                                                            <h6>Boite</h6>
+                                                        </div>
+                                                    }
+                                                   {
+                                                        Item.value == 'piscine' &&
+                                                        <div className="Profile_Services_items_item">
+                                                            <img src={Piscine} alt="" />
+                                                            <h6>piscine</h6>
+                                                        </div>
+                                                    }
+                                                                                                      {
+                                                        Item.value == 'Restaurant' &&
+                                                        <div className="Profile_Services_items_item">
+                                                            <img src={Restaurant} alt="" />
+                                                            <h6>Restaurant</h6>
+                                                        </div>
+                                                    }
+                                                                                                      {
+                                                        Item.value == 'Salle fitness' &&
+                                                        <div className="Profile_Services_items_item">
+                                                            <img src={Fitness} alt="" />
+                                                            <h6>Salle fitness</h6>
+                                                        </div>
+                                                    }
+                                                                                                                                                          {
+                                                        Item.value == 'Café' &&
+                                                        <div className="Profile_Services_items_item">
+                                                            <img src={Cafee} alt="" />
+                                                            <h6>Café</h6>
+                                                        </div>
+                                                    }
+                                                                                                                                                                                                              {
+                                                        Item.value == 'Transport' &&
+                                                        <div className="Profile_Services_items_item">
+                                                            <img src={Transport} alt="" />
+                                                            <h6>Transport</h6>
+                                                        </div>
+                                                    }
+                                                    
+                                                </>
+
+                                            )
+                                        })
+                                    }
+                                    {/* {HotelData?.Services?.includes('Wifi') && 
+                                <div className="Profile_Services_items_item">
                                         <img src={Wifi} alt="" />
                                         <h6>Wifi</h6>
-                                    </div>}
+                                    </div>
+                                    }
                                     {HotelData?.Services?.includes("Piscine") && <div className="Profile_Services_items_item">
                                         <img src={Piscine} alt="" />
                                         <h6>Piscine</h6>
@@ -160,7 +289,7 @@ const Profile = (Store)=>{
                                     {HotelData?.Services?.includes('Salle fitness') &&<div className="Profile_Services_items_item">
                                         <img src={Fitness} alt="" />
                                         <h6>Salle fitness</h6>
-                                    </div>}
+                                    </div>} */}
                                 </div>
                         </div>
                         <div className="Profile_SocialMedia">
@@ -171,212 +300,68 @@ const Profile = (Store)=>{
                                     {HotelData?.Website && <img src={Browser} alt="" />}
                                 </div>
                         </div>
-                        <div className="Profile_Revwies">
-                                <h5 className="TitleSection">Reviews</h5>
-                            <div className="reviews">
-                                <div className="reviews__card">
-                                    <div className="reviews__card__all">
-                                        <h3><span>4.7</span>/5</h3>
-                                        <div className="reviews__card__all__starts">
-                                            <div className="start">
-                                                    <img src={star} alt="" />
-                                                    <img src={star} alt="" />
-                                                    <img src={star} alt="" />
-                                                    <img src={star} alt="" />
-                                                    <img src={star} alt="" />
-                                            </div>
-                                        </div>
-                                        <p>240 reviews</p>
-                                    </div>
-                                    <div className="reviews__card__Allbars">
-                                        <div className="reviews__card__Allbars_singleBars">
-                                            <p>1</p>
-                                            <div className="single_Bar">
-                                                <div className="bar_yellow" style={{width:'50%'}}>
-                                                </div>
-                                            </div>
-                                            <p>(40)</p>
-                                        </div>
-                                        <div className="reviews__card__Allbars_singleBars">
-                                            <p>1</p>
-                                            <div className="single_Bar">
-                                                <div className="bar_yellow" style={{width:'50%'}}>
-                                                </div>
-                                            </div>
-                                            <p>(40)</p>
-                                        </div>
-                                        <div className="reviews__card__Allbars_singleBars">
-                                            <p>1</p>
-                                            <div className="single_Bar">
-                                                <div className="bar_yellow" style={{width:'50%'}}>
-                                                </div>
-                                            </div>
-                                            <p>(40)</p>
-                                        </div>
-                                        <div className="reviews__card__Allbars_singleBars">
-                                            <p>1</p>
-                                            <div className="single_Bar">
-                                                <div className="bar_yellow" style={{width:'50%'}}>
-                                                </div>
-                                            </div>
-                                            <p>(40)</p>
-                                        </div>
-                                        <div className="reviews__card__Allbars_singleBars">
-                                            <p>1</p>
-                                            <div className="single_Bar">
-                                                <div className="bar_yellow" style={{width:'50%'}}>
-                                                </div>
-                                            </div>
-                                            <p>(40)</p>
-                                        </div>
-                                    </div>
-                                    <button>See all reviews</button>
-                                </div>
-
-                            </div>
-                        </div>
                         <div className="Profile_Comment">
-                            <div className="reviewsPeaple__single">
-                                <div className="reviewsPeaple__single_Info">
-                                        <h4>FB</h4>
-                                        <div>
-                                            <h6>Fiacal bahsis</h6>
-                                            <span>21 april, 2022</span>
+                            {
+                                getcomment.map(item =>{
+                                    return (
+                                        <div className="reviewsPeaple__single">
+                                            <div className="reviewsPeaple__single_Info">
+                                                    <div>
+                                                        <h6>{item.Name}</h6>
+                                                        <span>21 april, 2022</span>
+                                                    </div>
+                                            </div>
+                                                <p>{item.Comment}</p>
                                         </div>
-                                </div>
-                                    <p>This guy is everything you could want. Great code, great price, great communication. Don't hesitate, this is your guy!</p>
-                            </div>
-                            <div className="reviewsPeaple__single">
-                                <div className="reviewsPeaple__single_Info">
-                                        <h4>FB</h4>
-                                        <div>
-                                            <h6>Fiacal bahsis</h6>
-                                            <span>21 april, 2022</span>
-                                        </div>
-                                </div>
-                                    <p> great price, great communication</p>
-                            </div>
-                            <div className="reviewsPeaple__single">
-                                <div className="reviewsPeaple__single_Info">
-                                        <h4>FB</h4>
-                                        <div>
-                                            <h6>Fiacal bahsis</h6>
-                                            <span>21 april, 2022</span>
-                                        </div>
-                                </div>
-                                    <p>This guy is everything you could want. Great code, great price, great communication. Don't hesitate, this is your guy!</p>
-                            </div>
+                                    )
+                                })
+                            }
+
                         </div>
                         <div className="NewComment">
                             <div className="NewComment__Faild">
                                 <img src={User} alt="" />
-                                <input type="text" placeholder="Your name" />
+                                <input type="text" placeholder="Your name" onChange={(e)=>{ChangeState("Name",e)}} />
                             </div>
                             <div  className="NewComment__Faild" >
-                                <textarea  placeholder="Write Your Message"></textarea>
+                                <textarea  placeholder="Write Your Message" onChange={(e)=>{ChangeState("Comment",e)}}></textarea>
                             </div>
-                            <button>Ajouter</button>
+                            <button onClick={()=>{AddComment()}}>Ajouter</button>
                         </div>
                 </div>
                 <div className="Profile_Information__left">
                     <div className="Description">
                         <h5>Description</h5>
                         <p>
-                            Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.
+                            {HotelData?.Description}
                         </p>
                     </div>
                     <div className="Offers">
                         <h5 className="TitleSection">Our Offers</h5>
-                        <div className="Offer__Type">
-                            <img src={HotelRooms} alt="" />
-                            <div className="Offer__Type__Content">
-                                    <h4>Room One bed</h4>
-                                    <div className="HowManyBed">
-                                        <h5>1</h5>
-                                        <span>X</span>
-                                        <img src={RoomBed} alt="" />
+                        {
+                            getRooms.map(item=>{
+                                return(
+                                    <div className="Offer__Type">
+                                        <img src={`${process.env.REACT_APP_API_PUBLIC}/${item.Image}`} alt="" />
+                                        <div className="Offer__Type__Content">
+                                                <h4>{item.Type}</h4>
+                                                <div className="HowManyBed">
+                                                    <h5>{item.Bed}</h5>
+                                                    <span>X</span>
+                                                    <img src={RoomBed} alt="" />
+                                                </div>
+                                                <p>{item.Description}</p>
+                                                <div className="PriceAndReserve">
+                                                        <h1>${item.Price}$<span>/Night</span></h1>
+                                                        <button onClick={()=>{SetRoomSeelect(item),SetOpenRéserve(true)}}>Book now</button>
+                                                </div>
+                                        </div>
                                     </div>
-                                    <p>
-                                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
-                                    </p>
-                                    <div className="PriceAndReserve">
-                                            <h1>130$<span>/Night</span></h1>
-                                            <button onClick={() =>Store.OpenRéserve()}>Book now</button>
-                                    </div>
-                            </div>
-                        </div>
-                        <div className="Offer__Type">
-                            <img src={roomTwoBed} alt="" />
-                            <div className="Offer__Type__Content">
-                                    <h4>Room Two bed</h4>
-                                    <div className="HowManyBed">
-                                        <h5>1</h5>
-                                        <span>X</span>
-                                        <img src={RoomBed} alt="" />
-                                    </div>
-                                    <p>
-                                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
-                                    </p>
-                                    <div className="PriceAndReserve">
-                                            <h1>130$<span>/Night</span></h1>
-                                            <button>Book now</button>
-                                    </div>
-                            </div>
-                        </div>
-                        <div className="Offer__Type">
-                            <img src={Villa} alt="" />
-                            <div className="Offer__Type__Content">
-                                    <h4>Villa</h4>
-                                    <div className="HowManyBed">
-                                        <h5>1</h5>
-                                        <span>X</span>
-                                        <img src={RoomBed} alt="" />
-                                    </div>
-                                    <p>
-                                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
-                                    </p>
-                                    <div className="PriceAndReserve">
-                                            <h1>130$<span>/Night</span></h1>
-                                            <button>Book now</button>
-                                    </div>
-                            </div>
-                        </div>
-                        <div className="Offer__Type">
-                            <img src={Appartement} alt="" />
-                            <div className="Offer__Type__Content">
-                                    <h4>Appartement</h4>
-                                    <div className="HowManyBed">
-                                        <h5>1</h5>
-                                        <span>X</span>
-                                        <img src={RoomBed} alt="" />
-                                    </div>
-                                    <p>
-                                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
-                                    </p>
-                                    <div className="PriceAndReserve">
-                                            <h1>130$<span>/Night</span></h1>
-                                            <button>Book now</button>
-                                    </div>
-                            </div>
-                        </div>
-                        <div className="Offer__Type">
-                            <img src={roomTwoBed} alt="" />
-                            <div className="Offer__Type__Content">
-                                    <h4>Room multiple bed</h4>
-                                    <div className="HowManyBed">
-                                        <h5>1</h5>
-                                        <span>X</span>
-                                        <img src={RoomBed} alt="" />
-                                    </div>
-                                    <p>
-                                        Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer.
-                                    </p>
-                                    <div className="PriceAndReserve">
-                                            <h1>130$<span>/Night</span></h1>
-                                            <button>Book now</button>
-                                    </div>
-                            </div>
-                        </div>
+                                )
+                            })
+                        }
+
+
                     </div>
 
                 </div>

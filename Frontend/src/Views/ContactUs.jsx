@@ -1,9 +1,38 @@
 import '../Assets/Sass/Base.scss'
 import './Contact.scss'
 import { Link } from 'react-router-dom';
+import {useState,useEffect} from 'react'
+import axios from 'axios'
+import {Support} from '../AppCall';
+import {SwalAlert} from '../Helpers/Alert'
 
 
 function Contact() {
+    const [DataMessage,SetDataMessage] = useState({
+        Name:'',
+        Email:'',
+        Subject:'',
+        Message:'',
+      })
+    
+      const ChangeState = (key,e) =>{
+          const newstate = {...DataMessage}
+          newstate[key]=e.target.value
+          SetDataMessage(newstate)
+      }
+
+      const SendMessage =(e) =>{
+        if(DataMessage.Email !== ""){
+            axios.post(`${process.env.REACT_APP_API_URL+Support}`,DataMessage)
+            .then((res)=>{
+              res.status === 200 && SwalAlert("Message sent successfully.",'success')
+            })
+            .catch(err=>{
+                SwalAlert("Please repeat again.",'error')
+            })
+          }
+      }
+
   return (
       <>
         <div class="contact">
@@ -22,12 +51,12 @@ function Contact() {
             </div>
             <div class="rightPart">
                 <form action="">
-                    <input type="text" class="form_input" placeholder="Name"  v-model='Name' required />
-                    <input type="email" class="form_input" placeholder="Email"  v-model='Email'  required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Email invalide" />
-                    <input type="text" class="form_input" placeholder="Subject"  v-model='Subject'  required />
-                    <textarea type="text" class="form_input" placeholder="Message"  v-model='Message'  required></textarea>
+                    <input onChange={(e)=>{ChangeState("Name",e)}}  type="text" class="form_input" placeholder="Name"  v-model='Name' required />
+                    <input onChange={(e)=>{ChangeState("Email",e)}}  type="email" class="form_input" placeholder="Email"  v-model='Email'  required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Email invalide" />
+                    <input onChange={(e)=>{ChangeState("Subject",e)}}  type="text" class="form_input" placeholder="Subject"  v-model='Subject'  required />
+                    <textarea onChange={(e)=>{ChangeState("Message",e)}}  type="text" class="form_input" placeholder="Message"  v-model='Message'  required></textarea>
                     <div class="btn__form__contact">
-                            <button class="secondry_GetStarted">Send</button>                        
+                            <button onClick={(e)=>{SendMessage(e)}} class="secondry_GetStarted">Send</button>                        
                     </div>
                 </form>
             </div>

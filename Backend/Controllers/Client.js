@@ -3,6 +3,7 @@ const ClienteSchema = require('../Modules/Client')
 module.exports={
     Get: async (req, res) => {
         try{
+            // console.log("its work")
             const Client =await ClienteSchema.find()
             return res.status(200).json(Client)
         }catch(err){

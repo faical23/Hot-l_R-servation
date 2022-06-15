@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const Comment = mongoose.Schema({
     Comment:{type:String},
-    Rate:{type:Number}
+    Name:{type:String},
+    Hotel:{type:mongoose.Schema.Types.ObjectId,ref:'Hotel'},
 },{timestamps:true})
 mongoose.model('Comment',Comment);
 module.exports = mongoose.model('Comment', Comment);
