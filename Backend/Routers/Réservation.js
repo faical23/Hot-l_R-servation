@@ -9,5 +9,7 @@ router.get('/Hotel/:id',Réservation.GetHotelRéservation)
 router.put('/:id',Réservation.Update)
 router.post('/',Réservation.Add)
 router.delete('/:id',Réservation.Delete)
+router.get('/profit/:id',Réservation.Profit)
+
 
 module.exports = router

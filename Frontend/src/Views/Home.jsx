@@ -12,6 +12,9 @@ import reservation from '../Assets/Img/reservation.png'
 import RateIcon from '../Assets/Img/star.png'
 import review from '../Assets/Img/review.png'
 import PinIcons from '../Assets/Img/pin.png'
+import Hotel_3 from '../Assets/Img/Hotel_3.jpg'
+import Hotel_2 from '../Assets/Img/hotel__2.jpg'
+import Hotel_1 from '../Assets/Img/hotel__1.jpg'
 
 
 import ExploreHotels from '../Compenents/ExploreHotels'
@@ -35,8 +38,8 @@ function Home() {
                     </div>
 
               </div>
-              <div className="HeroHome__Img">
-
+              <div className="HeroHome__Img" style={{width: '50%'}}>
+                  <img style={{width: "100%",borderRadius:"20px",boxShadow: "0px 0px 11px -5px"}} src={Hotel_1} alt="" />
             </div>
       </div>
       <div className="WhatWeServe mt-20">
@@ -97,8 +100,8 @@ function Home() {
             <ExploreHotels/>
       </div>
       <div className="Statistique mt-20">
-            <div className="Statistique__Img">
-
+            <div className="HeroHome__Img" style={{width: '50%'}}>
+                  <img style={{width: "90%",borderRadius:"20px",boxShadow: "0px 0px 11px -5px"}} src={Hotel_2} alt="" />
             </div>
             <div className="Statistique__Content">
                   <div className="Statistique__Content__Introduction">
@@ -151,8 +154,8 @@ function Home() {
 
                   </div>
             </div>
-            <div className="Reviews__Img">
-
+            <div className="HeroHome__Img" style={{width: '50%'}}>
+                  <img style={{width: "90%",margin:'0px auto',borderRadius:"20px",boxShadow: "0px 0px 11px -5px"}} src={Hotel_3} alt="" />
             </div>
       </div>
       <div className="CardFinal  mt-20">

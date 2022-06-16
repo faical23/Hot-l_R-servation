@@ -7,6 +7,7 @@ export const HotelPathUpdateImg = "/Hotel/img"
 export const RoomsPath = "/Room"
 export const Comment = '/Comment'
 export const HotelRoompath = '/Room/Hotel'
+export const ReservationPath = '/Reservation'
 
 
 

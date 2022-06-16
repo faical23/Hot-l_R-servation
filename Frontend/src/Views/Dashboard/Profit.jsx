@@ -1,8 +1,34 @@
 import '../../Assets/Sass/Base.scss'
 import './client.scss'
+import {useState,useEffect} from 'react'
+import axios from 'axios'
+import {ReservationPath} from '../../AppCall';
+import {SwalAlert} from '../../Helpers/Alert'
+import { connect } from "react-redux";
+import Swal from 'sweetalert2'
 
 
-function DashboradStatistique() {
+function DashboradStatistique(Props) {
+
+  const [Profit,SetProfit] = useState({
+    daily:'',
+    monthly:'',
+    total:''
+  })
+
+  const GetAllProfit = () =>{
+    axios.get(`${process.env.REACT_APP_API_URL}${ReservationPath}/Hotel/${Props.User.data.User._id}`)
+    .then((res)=>{
+        console.log("res",res.data)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  }
+  useEffect(() => {
+    GetAllProfit()
+  },[])
+
   return (
       <div  className="Dashboard__Centent__Tables">
         <div class="DashboardMoney__card">
@@ -29,4 +55,14 @@ function DashboradStatistique() {
   );
 }
 
-export default DashboradStatistique;
+const GetState = (state) =>{
+  return {
+      User:state?.UserData
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    UserData:(data) => dispatch({ type: 'SET_USERDATA',payload: data })
+  }
+}
+export default connect(GetState,mapDispatchToProps)(DashboradStatistique);

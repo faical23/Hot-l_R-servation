@@ -9,6 +9,7 @@ import { Select } from 'antd';
 import React, { useState } from "react";
 
 function RoomPopup(props) {
+    console.log(props.reservation)
 
   return (
     <div className="ConnexionZone reservationpopup">
@@ -17,26 +18,24 @@ function RoomPopup(props) {
                     <div >
                         <span>Name </span>
                         <div className="Inscription__Faild">
-                            <input type="text" value='faical bahsis'/>
+                            <input type="text"  value={props.reservation.Client}/>
                         </div>
                         <span>Room </span>
                         <div className="Inscription__Faild">
-                            <input type="text" value='Room number 15 block b' />
+                            <input type="text" value={props.reservation.Room} />
                         </div>
                         <span>Date start </span>
                         <div className="Inscription__Faild">
-                            <input type="text" value='15/07/2022' />
+                            <input type="text" value={props.reservation.DateStart.slice(0,10)} />
                         </div>
                         <span>Date end </span>
                         <div className="Inscription__Faild">
-                            <input type="text" value='23/07/2022' />
+                            <input type="text" value={props.reservation.DateEnd.slice(0,10)} />
                         </div>
                         <span>Total </span>
                         <div className="Inscription__Faild">
-                            <input type="text" value='400$' />
+                            <input type="text" value={`${props.reservation.Total}$`} />
                         </div>
-                        <button className="btnPayeed">Payed</button>
-
                         <button className="btnInvoice">Download invoice</button>
                     </div>
         </div>

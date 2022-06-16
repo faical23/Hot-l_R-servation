@@ -1,5 +1,6 @@
 const ClienteSchema = require('../Modules/Client')
 
+
 module.exports={
     Get: async (req, res) => {
         try{

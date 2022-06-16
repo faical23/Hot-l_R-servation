@@ -178,6 +178,7 @@
             justify-content: space-between;
             transition: .3s ease-in-out;
             .HotelPage__Hotels__Item{
+                box-shadow: 0px 0px 11px -7px black;
                 width:370px;
                 margin-bottom:60px;
                 cursor: pointer;
@@ -194,11 +195,14 @@
                 h2{
                     font-family: 'poping-Bold';
                     font-weight: bolder;
-                    font-size:30px;
+                    font-size:25px;
                     padding:10px 0px;
                     text-transform: capitalize;
                     width:300px;
                     margin: auto;
+                }
+                img{
+                    border-radius:10px;
                 }
                 .HotelPage__Hotel__Local{
                     display: flex;
@@ -242,7 +246,7 @@
                     }
                 }
                 button{
-                    display:none;
+                    // display:none;
                     margin-top: 20px;
                     background-color:rgb(101, 101, 238);
                     border: 1px solid rgb(101, 101, 238);

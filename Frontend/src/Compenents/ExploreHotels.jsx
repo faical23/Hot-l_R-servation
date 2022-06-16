@@ -4,37 +4,19 @@ import RateIcon from '../Assets/Img/star.png'
 import {useEffect,useState} from 'react'
 import API_URL from '../Config.js'
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
+
 
 const Hotel = (Hotel) =>{
-    const Rate = Hotel.SingleHotel.Comment
-    const CalculeAvgRate  = () =>{
-        let CollectRate  = 0;
-        if(Rate.length>0){
-            Rate.map(Element =>{
-                if(Element.Rate == 5) CollectRate+=(5*Element.Rate)
-                if(Element.Rate == 4) CollectRate+=(4*Element.Rate)
-                if(Element.Rate == 3) CollectRate+=(3*Element.Rate)
-                if(Element.Rate == 2) CollectRate+=(2*Element.Rate)
-                if(Element.Rate == 1) CollectRate+=(1*Element.Rate)
-            })
-            const Total = Number.parseFloat(CollectRate).toFixed(1);
-            return Total 
-        }
-        else return 0
-
-    }
+    console.log("hotel",Hotel.SingleHotel.CoverImg)
     return (
         <div  className="Tophotels__hotels__single">
-            <img className="HotelImg" src={HotelImg} alt="" />
+            <Link to={`/Hotel/${Hotel.SingleHotel._id}`}>
+                <img className="HotelImg" src={`${process.env.REACT_APP_API_PUBLIC}/${Hotel.SingleHotel.CoverImg}`} alt="" />
+            </Link>
+
             <h2>enjoy to the beauty {Hotel.SingleHotel.Name}</h2>
             <p>{Hotel.SingleHotel.Adress} , {Hotel.SingleHotel.City}</p>
-            <div className="ReviewsHotel">
-                <button>
-                    <img src={RateIcon} alt="" />
-                    4/5
-                </button>
-                <p>({Rate.length} reviews)</p>
-            </div>
     </div>
     )
 

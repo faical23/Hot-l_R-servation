@@ -55,6 +55,7 @@ module.exports={
         }
     },
     Login: async (req, res) => {
+        console.log("req",req.body)
         const Hotel = await HotelSchema.findOne({ Email: req.body.email}).exec();
         Hotel === null  && res.status(403).send({Message:'Email Not Found'})
         bcrypt.compare(req.body.password, Hotel.Password).then(async (validPass) => {

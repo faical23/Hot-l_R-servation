@@ -22,4 +22,5 @@ router.put('/:id',Hotel.Update)
 router.put('/img/:id',upload,Hotel.UpdateImg)
 router.delete('/:id',Hotel.Delete)
 
+
 module.exports = router

@@ -18,6 +18,7 @@ const Hotel = mongoose.Schema({
     Service:{Type:Array},
     Vérified:{Type:Boolean},
     Comment:[{type:mongoose.Schema.Types.ObjectId,ref:'Comment'}],
+    TypeHotel:{type:String},
     StartPrice:{type:Number}
 },{timestamps:true})  
 mongoose.model('Hotel',Hotel);

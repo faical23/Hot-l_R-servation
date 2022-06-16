@@ -19,7 +19,7 @@ const Navbar = (Store)=>{
             {Store.Inscription && <Inscription />}
             {Store.Login && <Login/>}
             <div className="navbar__Logo">
-                <h1>MyLogo</h1>
+                <h1>MYHOTEL</h1>
             </div>
             <div className="navbar__Menu">
                     <ul>
@@ -36,11 +36,6 @@ const Navbar = (Store)=>{
                         <li>
                             <Link to="/About">
                                 About
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/Hotel/1635">
-                                Profile
                             </Link>
                         </li>
                         <li>

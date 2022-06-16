@@ -202,7 +202,7 @@ const Profile = (Store)=>{
                                 <h5 className="TitleSection">services</h5>
                                 <div  className="Profile_Services_items">
                                     {
-                                        HotelData?.Service.map(Item =>{
+                                        HotelData?.Service.length && HotelData?.Service.map(Item =>{
                                             return(
                                                 <>
                                                     {
@@ -342,17 +342,17 @@ const Profile = (Store)=>{
                             getRooms.map(item=>{
                                 return(
                                     <div className="Offer__Type">
-                                        <img src={`${process.env.REACT_APP_API_PUBLIC}/${item.Image}`} alt="" />
+                                        <img src={`${process.env.REACT_APP_API_PUBLIC}/${item?.Image}`} alt="" />
                                         <div className="Offer__Type__Content">
-                                                <h4>{item.Type}</h4>
+                                                <h4>{item?.Type}</h4>
                                                 <div className="HowManyBed">
-                                                    <h5>{item.Bed}</h5>
+                                                    <h5>{item?.Bed}</h5>
                                                     <span>X</span>
                                                     <img src={RoomBed} alt="" />
                                                 </div>
-                                                <p>{item.Description}</p>
+                                                <p>{item?.Description}</p>
                                                 <div className="PriceAndReserve">
-                                                        <h1>${item.Price}$<span>/Night</span></h1>
+                                                        <h1>${item?.Price}$<span>/Night</span></h1>
                                                         <button onClick={()=>{SetRoomSeelect(item),SetOpenRéserve(true)}}>Book now</button>
                                                 </div>
                                         </div>
