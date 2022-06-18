@@ -31,27 +31,36 @@ function SearchHotels(Store) {
     const [OpenSearchHotel,SetOpenSearchHotel]=useState(false)
     const [ResultCitysSearch,SetResultCitysSearch] = useState([])
     const [ResultHotelsSearch,SetResultHotelsSearch] = useState([])
+    const [filterByCity,SetfilterByCity] = useState([])
+    const [filterByName,SetfilterByName] = useState([])
     const [InputSearchCity,SetInputSearchCity] = useState("")
     const [InoputSearchHotel,SetInoputSearchHotel] = useState("")
     useEffect(async() => {
         const res = await fetch(`${API_URL}/api/v1/Hotel?limit=10&city=${InputSearchCity}`);
         const ParseRes = await res.json();
-        console.log("res",res)
         SetResultCitysSearch(ParseRes)
-
-    },[InputSearchCity]);
+    },[]);
     useEffect(async() => {
         const res = await fetch(`${API_URL}/api/v1/Hotel?limit=10&Name=${InoputSearchHotel}`);
         const ParseRes = await res.json();
         SetResultHotelsSearch(ParseRes)
-    },[InoputSearchHotel]);
+    },[]);
+
+    useEffect(async() => {
+        const getfilter = ResultCitysSearch.filter(item =>item.City.includes(InputSearchCity))
+        SetfilterByCity(getfilter)
+    },[InputSearchCity])
+    useEffect(async() => {
+        const getfilter = ResultHotelsSearch.filter(item =>item.Name.includes(InoputSearchHotel))
+        SetfilterByName(getfilter)
+    },[InoputSearchHotel])
     const HideResult = () =>{
         SetOpenSearchCity(false)
     }
-    const CityResultFetch = ResultCitysSearch.map(Element =>{
+    const CityResultFetch = filterByCity.map(Element =>{
         return(<ResultSearchCity key={Element._id} Data={Element} Store={Store} HideResult={HideResult} />)
     })
-    const HotelResultFetch = ResultHotelsSearch.map(Element =>{
+    const HotelResultFetch = filterByName.map(Element =>{
         return(<ResultSearchHotel key={Element._id} Data={Element} />)
     })
 
@@ -83,12 +92,12 @@ function SearchHotels(Store) {
                         </div>
                             {
                             OpenSearchCity  && <div className="ResultSearch">
-                                                {ResultCitysSearch.length > 0 ? CityResultFetch : <h4>Not Found</h4>}
+                                                {filterByCity.length > 0 ? CityResultFetch : <h4>Not Found</h4>}
                                             </div>
                             } 
                             {
                             OpenSearchHotel  && <div className="ResultSearch">
-                                                {ResultHotelsSearch.length > 0 ? HotelResultFetch : <h4>Not Found</h4>}
+                                                {filterByName.length > 0 ? HotelResultFetch : <h4>Not Found</h4>}
                                             </div>
                             } 
     x               </div>

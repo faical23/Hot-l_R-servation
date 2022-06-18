@@ -170,3 +170,52 @@
         }
     }
 }
+#makepdf{
+    padding:100px;
+    .InvoiceHead{
+        display: flex;
+        justify-content:space-between;
+        background-color:#f4f4f4;
+        box-shadow:0px 0px 11px -9px black;
+        border-radius: 10px;
+        padding:50px 20px;
+        margin: 40px 0px;
+        h1{
+            font-size:25px
+        }
+        img{
+            width: 100px;
+        }
+    }
+    .Invoice_Body{
+        margin:100px 0px;
+        
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            tr th {
+                font-size: 18px;
+                padding: 12px;
+                border: 1px solid #eeeeee;
+                text-align: left;
+                background-color: rgba(217, 221, 146, 0.2);
+            }
+            
+            tr td {
+                border: 1px solid #eeeeee;
+                text-align: left;
+                padding: 12px;
+                font-size: 18px;
+            }
+            
+  
+    }
+    .Invoice_Footer{
+        h2{
+            font-size: 20px;
+            padding:5px 0px;
+        }
+    }
+}

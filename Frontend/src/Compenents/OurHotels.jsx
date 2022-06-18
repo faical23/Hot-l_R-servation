@@ -15,7 +15,7 @@ const Hotel = (Hotel) =>{
 
     return (
         <div className="HotelPage__Hotels__Item">
-            <img className="HotelImg" src={`${process.env.REACT_APP_API_PUBLIC}/${Hotel.SingleHotel.CoverImg}`} alt="" />
+            <img style={{width:'100%',height: '320px',objectFit: 'cover'}} className="HotelImg" src={`${process.env.REACT_APP_API_PUBLIC}/${Hotel.SingleHotel.CoverImg}`} alt="" />
             <h2>{Hotel.SingleHotel.Name}</h2>
             <div className="HotelPage__Hotel__Local">
                 <h6>{Hotel.SingleHotel.Adress},{Hotel.SingleHotel.City}</h6>

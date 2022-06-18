@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
 
 
 
-function DashboradStatistique() {
+function DashboradStatistique(props) {
   const [OpenPopup,SetOpenPopup] =useState(false)
   const [TypePopup,SetTypePopup] =useState('')
   const [RoomId,SetRoomId] = useState('')
@@ -25,11 +25,12 @@ function DashboradStatistique() {
 
 
   const ClosePopup = () =>{
+    GetAllRooms()
     SetOpenPopup(false)
   }
 
   const GetAllRooms = () =>{
-    axios.get(process.env.REACT_APP_API_URL+RoomsPath)
+    axios.get(`${process.env.REACT_APP_API_URL+RoomsPath}/Hotel/${props.User.data.User._id}`)
     .then((res)=>{
       SetAllRooms(res.data)
       SetFilterRooms(res.data)
@@ -91,6 +92,17 @@ function DashboradStatistique() {
 
       }
     })
+  }
+  const RemoveReserved = (id)=>{
+    axios.put(`${process.env.REACT_APP_API_URL+RoomsPath}//updatestate/${id}`,{})
+    .then((res)=>{
+      GetAllRooms()
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+
+    console.log(id)
   }
 
   return (
@@ -157,7 +169,7 @@ function DashboradStatistique() {
                       <p>{item.Type}</p>
                       <p>{item.Price}$</p>
                       <p>{item.Bed}</p>
-                      <p className={item.State ? "Notreserved" : "Isreserved"}>Réserved</p>
+                      <p className={item.State ? "Notreserved" : "Isreserved"} onClick={()=>{RemoveReserved(item._id)}}>Réserved</p>
                       <p className="actions">
                             <svg
                               onClick={()=>{SetOpenPopup(true);SetTypePopup('show'),SetRoomId(item._id)}}

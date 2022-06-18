@@ -1,6 +1,6 @@
 import '../../Assets/Sass/Base.scss'
 import './client.scss'
-// import Select from 'react-select'
+import Select from 'react-select'
 import { Input } from 'antd';
 import {useState,useEffect,useRef} from 'react'
 import { connect } from "react-redux";
@@ -38,6 +38,7 @@ function DashboradStatistique(Props) {
         newstate.User[key]=e.target.value
         SetUserdata(newstate)
     }
+    console.log("userData.User._id",userData.User)
 
     const SubmitUpdate = () =>{
         axios.put(`${process.env.REACT_APP_API_URL+HotelPath}/${userData.User._id}`,userData.User)
@@ -145,7 +146,7 @@ function DashboradStatistique(Props) {
 
         </div>
         <div className="Second_Informations">
-          {/* <span>Services</span>
+          <span>Services</span>
           <Select 
               isMulti
               name="Services"
@@ -154,7 +155,7 @@ function DashboradStatistique(Props) {
               classNamePrefix="select"
               onChange={e =>{HandleChangeSelect(e)}}
               defaultValue={userData.User?.Service}
-           /> */}
+           />
           <span>Description</span>
           <TextArea  onChange={(e)=>{ChangeState("Description",e)}} rows={4} placeholder="Description" value={userData.User?.Description} />
           <span>Localisation</span>

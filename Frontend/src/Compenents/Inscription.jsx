@@ -50,7 +50,7 @@ function Inscription(Store) {
         User:res.data.Hotel,
         token:res.data.token
       }
-      Store.UserData(userData)
+      // Store.UserData(userData)
       Store.ClosePopup()
     })
     .catch(err=>{

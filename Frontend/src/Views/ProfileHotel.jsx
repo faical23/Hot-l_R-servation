@@ -11,6 +11,8 @@ import Transport from '../Assets/Img/taxi.png'
 import Restaurant from '../Assets/Img/cutlery.png'
 import Cafee from '../Assets/Img/coffee.png'
 import Fitness from '../Assets/Img/fitness.png'
+import moment from 'moment'
+
 
 import HotelIcon from '../Assets/Img/hotelProdil.png'
 import Email from '../Assets/Img/email.png'
@@ -201,6 +203,7 @@ const Profile = (Store)=>{
                         <div className="Profile_Services">
                                 <h5 className="TitleSection">services</h5>
                                 <div  className="Profile_Services_items">
+                                    
                                     {
                                         HotelData?.Service.length && HotelData?.Service.map(Item =>{
                                             return(
@@ -308,7 +311,7 @@ const Profile = (Store)=>{
                                             <div className="reviewsPeaple__single_Info">
                                                     <div>
                                                         <h6>{item.Name}</h6>
-                                                        <span>21 april, 2022</span>
+                                                        <span>{moment(item.createdAt).startOf('day').fromNow()}</span>
                                                     </div>
                                             </div>
                                                 <p>{item.Comment}</p>
@@ -339,25 +342,27 @@ const Profile = (Store)=>{
                     <div className="Offers">
                         <h5 className="TitleSection">Our Offers</h5>
                         {
-                            getRooms.map(item=>{
-                                return(
-                                    <div className="Offer__Type">
-                                        <img src={`${process.env.REACT_APP_API_PUBLIC}/${item?.Image}`} alt="" />
-                                        <div className="Offer__Type__Content">
-                                                <h4>{item?.Type}</h4>
-                                                <div className="HowManyBed">
-                                                    <h5>{item?.Bed}</h5>
-                                                    <span>X</span>
-                                                    <img src={RoomBed} alt="" />
-                                                </div>
-                                                <p>{item?.Description}</p>
-                                                <div className="PriceAndReserve">
-                                                        <h1>${item?.Price}$<span>/Night</span></h1>
-                                                        <button onClick={()=>{SetRoomSeelect(item),SetOpenRéserve(true)}}>Book now</button>
-                                                </div>
+                            getRooms.length && getRooms.map(item=>{
+                                if(item){                                
+                                    return(
+                                        <div className="Offer__Type">
+                                            <img src={`${process.env.REACT_APP_API_PUBLIC}/${item?.Image}`} alt="" />
+                                            <div className="Offer__Type__Content">
+                                                    <h4>{item?.Type}</h4>
+                                                    <div className="HowManyBed">
+                                                        <h5>{item?.Bed}</h5>
+                                                        <span>X</span>
+                                                        <img src={RoomBed} alt="" />
+                                                    </div>
+                                                    <p>{item?.Description}</p>
+                                                    <div className="PriceAndReserve">
+                                                            <h1>${item?.Price}$<span>/Night</span></h1>
+                                                            <button onClick={()=>{SetRoomSeelect(item),SetOpenRéserve(true)}}>Book now</button>
+                                                    </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                )
+                                    )
+                                }
                             })
                         }
 

@@ -8,6 +8,7 @@ import {ReservationPath} from '../../AppCall';
 import {SwalAlert} from '../../Helpers/Alert'
 import { connect } from "react-redux";
 import Swal from 'sweetalert2'
+import hotel_logo from '../../Assets/Img/hotel_logo.png'
 
 
 
@@ -154,6 +155,7 @@ function DashboradStatistique(Props) {
             <p class="error">Not found</p>
           }
         </div>
+
       </div>
     </>
   );
