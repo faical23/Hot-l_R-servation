@@ -82,6 +82,21 @@ module.exports={
             res.status(400).json(err)
         }
     },
+    UpdateState :async (req,res)=>{
+        try{
+            const id = req.params.id ;
+            const updateDoc = {
+              $set: {
+                State:false,
+              },
+            };
+            const Room = await RoomSchema.findByIdAndUpdate(id, updateDoc);
+            return res.status(200).json({Message:"Update successfuly"})
+        }catch(err){
+            console.log("err",err)
+            res.status(400).json(err)
+        }
+    },
     Delete: async (req, res) => {
         try{
             const id = req.params.id

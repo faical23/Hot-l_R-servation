@@ -23,5 +23,7 @@ router.delete('/:id',Room.Delete)
 router.get('/Hotel/Disponible/:id',Room.DisponbleRoom)
 router.get('/Type/:id',Room.GetRoomByType)
 router.get('/:hotel/:type',Room.GetRoomByTypeBYHotel)
+router.put('/updatestate/:id/',Room.UpdateState)
+
 
 module.exports = router

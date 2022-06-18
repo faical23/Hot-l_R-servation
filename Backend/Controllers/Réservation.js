@@ -113,8 +113,21 @@ module.exports={
     Profit: async (req, res) => {
         try{
             const id = req.params.id
-            const Réservation =await RéservationeSchema.find({Hotel:id})
-            return res.status(200).json(Réservation)
+            console.log("id",id)
+            const today = new Date()
+            var d = new Date();
+            d.setMonth(d.getMonth() - 1);
+            const Monthly =await RéservationeSchema.find({createdAt:{$gte:d,$lte:today},Hotel:id}); 
+            const Daily =await RéservationeSchema.find({createdAt:{$gte:today},Hotel:id}); 
+            const All =await RéservationeSchema.find({Hotel:id}); 
+            console.log({gte:d,lte:today})
+            const data = {
+                month:Monthly,
+                Day:Daily,
+                total:All
+            }
+            // console.log("data",data)
+            return res.status(200).json(data)
         }catch(err){
             console.log(err)
         }

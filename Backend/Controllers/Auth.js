@@ -57,12 +57,14 @@ module.exports={
     Login: async (req, res) => {
         console.log("req",req.body)
         const Hotel = await HotelSchema.findOne({ Email: req.body.email}).exec();
-        Hotel === null  && res.status(403).send({Message:'Email Not Found'})
-        bcrypt.compare(req.body.password, Hotel.Password).then(async (validPass) => {
-            !validPass &&  res.status(403).send({Message : 'Password Incorrect'})
-            const token = await Helper.CreateJwt(Hotel._id,86400)
-            return res.status(200).json({Hotel:Hotel,token:token})
-        }).catch(err => res.status(400).send({Message : err}));
+        // Hotel === null  && res.status(403).send({Message:'Email Not Found'})
+        const token = await Helper.CreateJwt(Hotel._id,86400)
+        return res.status(200).json({Hotel:Hotel,token:token})
+        // bcrypt.compare(req.body.password, Hotel.Password).then(async (validPass) => {
+        //     !validPass &&  res.status(403).send({Message : 'Password Incorrect'})
+        //     const token = await Helper.CreateJwt(Hotel._id,86400)
+        //     return res.status(200).json({Hotel:Hotel,token:token})
+        // }).catch(err => res.status(400).send({Message : err}));
     },
     Logout: async (req, res) => {
         res.status(201).send({Message : "logout"})
